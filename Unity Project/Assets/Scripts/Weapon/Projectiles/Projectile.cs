@@ -49,7 +49,7 @@ public class Projectile : MonoBehaviour {
 		KillProjectile();
 	}
 
-	private void KillProjectile()
+	protected void KillProjectile()
 	{
 		StopCoroutine("Shooting");
 		Destroy(gameObject);
