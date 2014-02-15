@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a727b7b69448aed459409adad5ba4235
+guid: 491132057e2f9e54ebf2a8ba250cdcd0
 TextureImporter:
   serializedVersion: 2
   mipmaps:
@@ -30,7 +30,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -44,6 +44,78 @@ TextureImporter:
     textureFormat: -2
     compressionQuality: 50
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: rabbit_spritesheet_monster_476x300_0
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 0
+        width: 246
+        height: 246
+      alignment: 7
+      pivot: {x: 0, y: 0}
+    - name: rabbit_spritesheet_monster_476x300_1
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 0
+        width: 261
+        height: 246
+      alignment: 7
+      pivot: {x: 0, y: 0}
+    - name: rabbit_spritesheet_monster_476x300_2
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 0
+        width: 253
+        height: 238
+      alignment: 7
+      pivot: {x: 0, y: 0}
+    - name: rabbit_spritesheet_monster_476x300_3
+      rect:
+        serializedVersion: 2
+        x: 1513
+        y: 0
+        width: 265
+        height: 257
+      alignment: 7
+      pivot: {x: 0, y: 0}
+    - name: rabbit_spritesheet_monster_476x300_4
+      rect:
+        serializedVersion: 2
+        x: 1993
+        y: 0
+        width: 246
+        height: 246
+      alignment: 7
+      pivot: {x: 0, y: 0}
+    - name: rabbit_spritesheet_monster_476x300_5
+      rect:
+        serializedVersion: 2
+        x: 2466
+        y: 0
+        width: 261
+        height: 246
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: rabbit_spritesheet_monster_476x300_6
+      rect:
+        serializedVersion: 2
+        x: 2958
+        y: 0
+        width: 253
+        height: 238
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: rabbit_spritesheet_monster_476x300_7
+      rect:
+        serializedVersion: 2
+        x: 3419
+        y: 0
+        width: 265
+        height: 257
+      alignment: 7
+      pivot: {x: .5, y: 0}
   spritePackingTag: 
   userData: 

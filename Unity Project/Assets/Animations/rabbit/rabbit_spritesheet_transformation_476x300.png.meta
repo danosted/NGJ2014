@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e98d7af2b7c7a47a5b3bb9d1de4b7bec
+guid: a24c42bbdf715fc4db1b1ceee728e375
 TextureImporter:
   serializedVersion: 2
   mipmaps:
@@ -24,13 +24,13 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -44,6 +44,60 @@ TextureImporter:
     textureFormat: -2
     compressionQuality: 50
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: rabbit_spritesheet_transformation_476x300_2
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 0
+        width: 157
+        height: 203
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: rabbit_spritesheet_transformation_476x300_3
+      rect:
+        serializedVersion: 2
+        x: 1534
+        y: 4
+        width: 296
+        height: 220
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: rabbit_spritesheet_transformation_476x300_4
+      rect:
+        serializedVersion: 2
+        x: 1998
+        y: 0
+        width: 262
+        height: 262
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: rabbit_spritesheet_transformation_476x300_5
+      rect:
+        serializedVersion: 2
+        x: 2470
+        y: 4
+        width: 251
+        height: 251
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: rabbit_spritesheet_transformation_476x300_0
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 0
+        width: 59
+        height: 86
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: rabbit_spritesheet_transformation_476x300_1
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 0
+        width: 78
+        height: 133
+      alignment: 7
+      pivot: {x: .5, y: 0}
   spritePackingTag: 
   userData: 

@@ -4,36 +4,52 @@ using System.Collections;
 public class EnemyMovement : MonoBehaviour {
 
 	private Transform[] enemyPath;
+	private Enemy enemyReference;
 	private float pathProgress;
 	[SerializeField]
 	private float MovementSpeed;
 	[SerializeField]
 	private GameObject enemyPathObject;
 
-	public void Init()
+	public void Init(Enemy enemyReference)
 	{
 		if (enemyPath == null)
 		{
 			enemyPath = this.GetEnemyPath(enemyPathObject);
 		}
+		this.enemyReference = enemyReference;
 		this.transform.position = enemyPath[0].position;
 		this.pathProgress = 0;
 		this.GetComponent<Rigidbody2D>().Sleep();
 	}
 
-	private void Deactivate()
+	public void Deactivate()
 	{
 		this.enabled = false;
 	}
 
 	void Update () 
 	{
-		if (GetComponent<Enemy>().GetIsShot() || pathProgress >= 1)
+		if (pathProgress >= 1)
 		{
 			this.Deactivate();
 		}
-		iTween.PutOnPath(gameObject, enemyPath, pathProgress);
-		pathProgress += MovementSpeed * 0.01f * Time.deltaTime;
+		else if(!enemyReference.GetIsSpecialAnimating())
+		{
+			iTween.PutOnPath(gameObject, enemyPath, pathProgress);
+			pathProgress += MovementSpeed * 0.01f * Time.deltaTime;
+		}
+	}
+
+	public void GotShot(Projectile projectile)
+	{
+		bool isDead = enemyReference.GetHealth() <= 0;
+		if (isDead)
+		{
+			collider2D.isTrigger = false;
+			rigidbody2D.AddForce(new Vector2(projectile.GetDirection().y, -projectile.GetDirection().x * 10 * ((-projectile.GetDirection().x < 0) ? -1 : 1)));
+			this.Deactivate();
+		}
 	}
 	private Transform[] GetEnemyPath(GameObject enemyPathObject)
 	{

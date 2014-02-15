@@ -97,7 +97,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
-  m_GravityScale: .0920000002
+  m_GravityScale: .300000012
   m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  health: 1
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
