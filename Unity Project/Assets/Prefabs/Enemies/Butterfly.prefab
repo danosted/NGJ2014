@@ -109,7 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c12b4c1d8b3874d49b068d5528196b1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 50
+  MovementSpeed: 10
+  enemyPathObject: {fileID: 100010, guid: 65dd4ea026e1d9e49bc634c1af1109bf, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

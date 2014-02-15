@@ -26,11 +26,11 @@ public class EnemyManager : MonoBehaviour {
 	{
 		if(Input.GetKeyDown(KeyCode.B))
 		{
-			enemyPool.Add(GetAvailableEnemy(EnemyType.Butterfly));
+			GetAvailableEnemy(EnemyType.Butterfly).Init();
 		}
 		else if(Input.GetKeyDown(KeyCode.R))
 		{
-			enemyPool.Add(GetAvailableEnemy(EnemyType.Rabbit));
+			GetAvailableEnemy(EnemyType.Rabbit).Init();
 		}
 	}
 
@@ -40,6 +40,7 @@ public class EnemyManager : MonoBehaviour {
 		if (!enemy)
 		{
 			enemy = InstantiateEnemy(enemyType);
+			enemyPool.Add(enemy);
 		}
 		return enemy;
 	}

@@ -5,20 +5,23 @@ public class Enemy : MonoBehaviour {
 
 	[SerializeField]
 	private EnemyType type;
-	[SerializeField]
-	private GameObject enemyPathObject;
 	private EnemyManager enemyManager;
 	private bool isShot;
 	
 	public void Init()
 	{
-		Transform[] enemyPath = this.GetEnemyPath(enemyPathObject);
-		GetComponent<EnemyMovement>().SetEnemyPath(enemyPath);
-		this.transform.position = enemyPath[0].position;
 		isShot = false;
+		this.enabled = true;
+		this.gameObject.SetActive(true);
+		GetComponent<EnemyMovement>().Init();
 	}
 
-	public void OnTriggerEnter2D(Collider2D collider)
+	public void DeactivateObject()
+	{
+		this.gameObject.SetActive(false);
+	}
+
+    void OnTriggerEnter2D(Collider2D collider)
 	{
 		if (collider.GetComponent<Projectile>())
 		{
@@ -40,16 +43,6 @@ public class Enemy : MonoBehaviour {
 	public EnemyType GetEnemyType()
 	{
 		return this.type;
-	}
-	public Transform[] GetEnemyPath(GameObject enemyPathObject)
-	{
-		Transform[] enemyPath = new Transform[enemyPathObject.transform.childCount];
-		for(int i = 0; i < enemyPath.Length; i++)
-		{
-			enemyPath[i] = enemyPathObject.transform.GetChild(i);
-		}
-	
-		return enemyPath;
 	}
 }
 
