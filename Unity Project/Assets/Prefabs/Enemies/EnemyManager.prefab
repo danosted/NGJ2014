@@ -38,10 +38,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d97398ccb366844687ae597a45fd0b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPathObject: {fileID: 100008, guid: 8b519a22ea302df45bd4bbaccc5c7b5d, type: 2}
+  enemyPathObject: {fileID: 100010, guid: f87210a162876f64886c4d4859eb554e, type: 2}
   enemyPrefabs:
   - {fileID: 11400000, guid: fa5f3bcf5b8901149b8e642d1b7dd7a6, type: 2}
-  - {fileID: 11400000, guid: 759f71e84f991714b9702408e80b720c, type: 2}
+  - {fileID: 11400000, guid: 6f51cbe01ab587d4da92f93d0429cce5, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
