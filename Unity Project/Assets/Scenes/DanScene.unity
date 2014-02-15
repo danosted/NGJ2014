@@ -222,11 +222,11 @@ AudioSource:
   m_GameObject: {fileID: 437346453}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 8039171667a952149b9910743927b8db, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 616a9309b9e1af044be852b441e796ac, type: 3}
   m_PlayOnAwake: 1
   m_Volume: .25
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Priority: 128
   DopplerLevel: 1
@@ -637,12 +637,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea65a12ada30b1418324b1d1d9a2b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeTime: 10
+  shakeTime: 5
   shakeFreq: 1
   magX: 1
   magY: 1
   magZ: 1
-  colorChangeTime: 10
+  colorChangeTime: 5
   colMag: 1
   colChangeFreq: 1
 --- !u!1001 &1887824935
@@ -679,6 +679,14 @@ Prefab:
     - target: {fileID: 400000, guid: 2653cca516b8c494eb1f550569136c1b, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 2653cca516b8c494eb1f550569136c1b, type: 2}
+      propertyPath: shakeTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 2653cca516b8c494eb1f550569136c1b, type: 2}
+      propertyPath: colorChangeTime
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2653cca516b8c494eb1f550569136c1b, type: 2}
@@ -718,6 +726,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5f3a15c37f72a13468722dcab3cc80a8, type: 2}
       propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200000, guid: 5f3a15c37f72a13468722dcab3cc80a8, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 616a9309b9e1af044be852b441e796ac, type: 3}
+    - target: {fileID: 8200000, guid: 5f3a15c37f72a13468722dcab3cc80a8, type: 2}
+      propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

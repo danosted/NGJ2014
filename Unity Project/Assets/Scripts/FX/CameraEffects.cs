@@ -24,6 +24,11 @@ public class CameraEffects : MonoBehaviour {
 	private Vector3 origin;
 	private Color orig_col;
 
+	void Start()
+	{
+		origin = transform.position;
+	}
+
 	void Update()
 	{
 		if(Input.GetMouseButtonDown(0))
@@ -34,7 +39,7 @@ public class CameraEffects : MonoBehaviour {
 
 	public void StartCameraShake()
 	{
-		origin = transform.position;
+		StopCoroutine("ShakeCam");
 		StartCoroutine(ShakeCam());
 	}
 
