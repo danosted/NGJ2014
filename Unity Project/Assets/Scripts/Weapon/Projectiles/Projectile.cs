@@ -47,8 +47,12 @@ public class Projectile : MonoBehaviour {
 	{
 		if(collision.gameObject.GetComponent<Enemy>())
 		{
-			//TODO: Do damage
 			hit = true;
+			if(aoe > 0f)
+			{
+				GameObject splash = Instantiate(gameObject, transform.position, Quaternion.identity) as GameObject;
+				splash.GetComponent<CircleCollider2D>().radius = aoe * 2f;
+			}
 			KillProjectile();
 		}
 	}

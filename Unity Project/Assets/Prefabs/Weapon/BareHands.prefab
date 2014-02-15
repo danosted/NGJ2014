@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firingDelay: 1
-  firingRange: 5
+  firingRange: 15
   projectileSpeed: .5
   projectileDamage: 1
   projectileAoe: 0
