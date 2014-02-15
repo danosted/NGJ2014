@@ -49,7 +49,12 @@ public class Projectile : MonoBehaviour {
 		KillProjectile();
 	}
 
-	protected void KillProjectile()
+	public Vector3 GetDirection()
+	{
+		return this.direction;
+	}
+
+	private void KillProjectile()
 	{
 		StopCoroutine("Shooting");
 		Destroy(gameObject);

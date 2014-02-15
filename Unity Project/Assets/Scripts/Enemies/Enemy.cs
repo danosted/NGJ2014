@@ -5,25 +5,31 @@ public class Enemy : MonoBehaviour {
 
 	[SerializeField]
 	private EnemyType type;
-	[SerializeField]
-	private GameObject enemyPathObject;
 	private EnemyManager enemyManager;
 	private bool isShot;
 	
 	public void Init()
 	{
-		Transform[] enemyPath = this.GetEnemyPath(enemyPathObject);
-		GetComponent<EnemyMovement>().SetEnemyPath(enemyPath);
-		this.transform.position = enemyPath[0].position;
 		isShot = false;
+		this.enabled = true;
+		this.gameObject.SetActive(true);
+		GetComponent<EnemyMovement>().Init();
 	}
 
-	public void OnTriggerEnter2D(Collider2D collider)
+	public void DeactivateObject()
 	{
-		if (collider.GetComponent<Projectile>())
+		this.gameObject.SetActive(false);
+	}
+
+    void OnTriggerEnter2D(Collider2D collider)
+	{
+		Projectile projectile = collider.GetComponent<Projectile>();
+		if (projectile)
 		{
 			this.GetComponent<Rigidbody2D>().WakeUp();
 			transform.collider2D.isTrigger = false;
+			rigidbody2D.AddForce(new Vector2(projectile.GetDirection().x, projectile.GetDirection().y) * 10);
+			rigidbody2D.AddForce(new Vector2(projectile.GetDirection().y, -projectile.GetDirection().x * 10) * 10);
 			isShot = true;
 		}
 	}
@@ -40,16 +46,6 @@ public class Enemy : MonoBehaviour {
 	public EnemyType GetEnemyType()
 	{
 		return this.type;
-	}
-	public Transform[] GetEnemyPath(GameObject enemyPathObject)
-	{
-		Transform[] enemyPath = new Transform[enemyPathObject.transform.childCount];
-		for(int i = 0; i < enemyPath.Length; i++)
-		{
-			enemyPath[i] = enemyPathObject.transform.GetChild(i);
-		}
-	
-		return enemyPath;
 	}
 }
 
