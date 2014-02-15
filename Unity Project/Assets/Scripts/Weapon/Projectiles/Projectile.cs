@@ -54,7 +54,7 @@ public class Projectile : MonoBehaviour {
 		return this.direction;
 	}
 
-	private void KillProjectile()
+	protected void KillProjectile()
 	{
 		StopCoroutine("Shooting");
 		Destroy(gameObject);
