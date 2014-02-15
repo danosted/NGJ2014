@@ -128,4 +128,9 @@ public class Character : MonoBehaviour {
 			weapon = wGO.GetComponent<Weapon>();
 		}
 	}
+
+	public float GetHealth()
+	{
+		return this.health;
+	}
 }
