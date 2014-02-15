@@ -97,7 +97,9 @@ MonoBehaviour:
   health: 100
   zen: 0
   gunPosition: {fileID: 400004}
-  weapon: {fileID: 11400000, guid: 8fdbe2ddb2f4d864a930e706ba234bc4, type: 2}
+  weapons:
+  - {fileID: 11400000, guid: 8fdbe2ddb2f4d864a930e706ba234bc4, type: 2}
+  - {fileID: 11400000, guid: 2423d78956b45c64eb16a15b92419096, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -10,11 +10,14 @@ public class Character : MonoBehaviour {
 	[SerializeField]
 	private Transform gunPosition;
 	[SerializeField]
-	private Weapon weapon;
+	private Weapon[] weapons;
 
+	private Weapon weapon;
 	private bool facingLeft;
 	private bool isFiring;
 	private Transform model;
+
+	private GameManager gameManInstance;
 
 	void Awake()
 	{
@@ -26,10 +29,13 @@ public class Character : MonoBehaviour {
 		input.OnFaceRight += FaceRight;
 #endif
 		model = transform.FindChild("Model");
+		weapon = weapons[0];
 		GameObject weaponGO = Instantiate(weapon.gameObject, gunPosition.position, weapon.transform.rotation) as GameObject;
 		weaponGO.transform.parent = transform;
 		weapon = weaponGO.GetComponent<Weapon>();
 
+		gameManInstance = GameManager.Instance;
+		gameManInstance.OnStateChanged += OnStateChange;
 	}
 
 	public void Initialize()
@@ -102,9 +108,24 @@ public class Character : MonoBehaviour {
 		isFiring = false;
 	}
 
-	private void SwitchWeapon(Weapon weapon)
+	private void OnStateChange(int state, float stateChangeTime)
 	{
-
+		StartCoroutine(ChangeToState(state, stateChangeTime));
 	}
 
+	private IEnumerator ChangeToState(int state, float stateChangeTime)
+	{
+		yield return new WaitForSeconds(stateChangeTime);
+		if(weapons.Length > state)
+		{
+			Destroy(weapon.gameObject);
+			GameObject wGO = Instantiate(weapons[state].gameObject, gunPosition.position, weapons[state].transform.rotation) as GameObject;
+			wGO.transform.parent = transform;
+			if(facingLeft)
+			{
+				wGO.transform.localScale = new Vector3(-1f * wGO.transform.localScale.x,wGO.transform.localScale.y, wGO.transform.localScale.z);
+			}
+			weapon = wGO.GetComponent<Weapon>();
+		}
+	}
 }

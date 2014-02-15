@@ -21,12 +21,20 @@ public class GameManager : MonoBehaviour {
 		currentState = 0;
 		score = 0;
 		combo = 0;
+		StartCoroutine(test ());
+	}
+
+	private IEnumerator test()
+	{
+		yield return new WaitForSeconds(10f);
+		GoToNextState();
 	}
 
 	public void GoToNextState()
 	{
 		currentState++;
-		OnStateChanged(currentState, stateChangeTime);
+		if(OnStateChanged != null)
+			OnStateChanged(currentState, stateChangeTime);
 	}
 
 }
