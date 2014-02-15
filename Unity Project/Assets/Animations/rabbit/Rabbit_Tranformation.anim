@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Rabbit_jump
+  m_Name: Rabbit_Tranformation
   serializedVersion: 4
   m_AnimationType: 2
   m_Compressed: 0
@@ -18,19 +18,17 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: b65052505ce95244fa55af0a2172016f, type: 3}
+      value: {fileID: 21300008, guid: a24c42bbdf715fc4db1b1ceee728e375, type: 3}
     - time: .0833333358
-      value: {fileID: 21300002, guid: b65052505ce95244fa55af0a2172016f, type: 3}
+      value: {fileID: 21300010, guid: a24c42bbdf715fc4db1b1ceee728e375, type: 3}
     - time: .166666672
-      value: {fileID: 21300004, guid: b65052505ce95244fa55af0a2172016f, type: 3}
+      value: {fileID: 21300000, guid: a24c42bbdf715fc4db1b1ceee728e375, type: 3}
     - time: .25
-      value: {fileID: 21300006, guid: b65052505ce95244fa55af0a2172016f, type: 3}
+      value: {fileID: 21300002, guid: a24c42bbdf715fc4db1b1ceee728e375, type: 3}
     - time: .333333343
-      value: {fileID: 21300008, guid: b65052505ce95244fa55af0a2172016f, type: 3}
+      value: {fileID: 21300004, guid: a24c42bbdf715fc4db1b1ceee728e375, type: 3}
     - time: .416666657
-      value: {fileID: 21300010, guid: b65052505ce95244fa55af0a2172016f, type: 3}
-    - time: .5
-      value: {fileID: 21300012, guid: b65052505ce95244fa55af0a2172016f, type: 3}
+      value: {fileID: 21300006, guid: a24c42bbdf715fc4db1b1ceee728e375, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -43,7 +41,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: .583333313
+    m_StopTime: .5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

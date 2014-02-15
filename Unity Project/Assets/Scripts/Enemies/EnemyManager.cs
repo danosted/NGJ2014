@@ -16,6 +16,10 @@ public class EnemyManager : MonoBehaviour {
 	private int enemySpawnCount;
 	private List<int> enemySpawnIntervals;
 	private int enemySpawnTypes;
+
+	[SerializeField]
+	private int rabbitSpecialNumber;
+	private int rabbitSpawnCount;
 	
 	void Awake()
 	{
@@ -30,6 +34,8 @@ public class EnemyManager : MonoBehaviour {
 		enemySpawnIntervals = new List<int>();
 		enemySpawnIntervals.AddRange(new int[3] {3, 10000, 100000});
 		enemySpawnTypes = 0;
+
+		rabbitSpawnCount = 0;
 		
 		Invoke("SpawnEnemyLoop", Random.Range (enemySpawnLimits.x, enemySpawnLimits.y));
 	}
@@ -55,7 +61,17 @@ public class EnemyManager : MonoBehaviour {
 	private void SpawnEnemyLoop()
 	{
 		enemySpawnLimits *= 0.95f;
-		GetAvailableEnemy((EnemyType)Random.Range(0, enemySpawnTypes + 1)).Init();
+		Enemy enemy = GetAvailableEnemy((EnemyType)Random.Range(0, enemySpawnTypes + 1));
+		enemy.Init();
+		if (enemy.GetEnemyType() == EnemyType.Rabbit && (rabbitSpawnCount < rabbitSpecialNumber))
+		{
+			rabbitSpawnCount++;
+			if (rabbitSpawnCount >= rabbitSpecialNumber)
+			{
+				enemy.SetIsSpecial(true);
+			}
+		}
+
 		if (++enemySpawnCount >= enemySpawnIntervals[enemySpawnTypes])
 		{
 			enemySpawnTypes++;

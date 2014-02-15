@@ -1,7 +1,5 @@
 fileFormatVersion: 2
-guid: b65052505ce95244fa55af0a2172016f
-labels:
-- Character
+guid: a24c42bbdf715fc4db1b1ceee728e375
 TextureImporter:
   serializedVersion: 2
   mipmaps:
@@ -47,67 +45,58 @@ TextureImporter:
     compressionQuality: 50
   spriteSheet:
     sprites:
-    - name: rabbit_spritesheet_159x100_1
+    - name: rabbit_spritesheet_transformation_476x300_2
       rect:
         serializedVersion: 2
-        x: 5
-        y: 100
-        width: 83
-        height: 47
-      alignment: 7
-      pivot: {x: .5, y: 0}
-    - name: rabbit_spritesheet_159x100_2
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 100
-        width: 100
-        height: 59
-      alignment: 7
-      pivot: {x: .5, y: 0}
-    - name: rabbit_spritesheet_159x100_3
-      rect:
-        serializedVersion: 2
-        x: 353
-        y: 112
-        width: 117
-        height: 59
-      alignment: 7
-      pivot: {x: .5, y: 0}
-    - name: rabbit_spritesheet_159x100_4
-      rect:
-        serializedVersion: 2
-        x: 529
-        y: 100
-        width: 83
-        height: 77
-      alignment: 7
-      pivot: {x: .5, y: 0}
-    - name: rabbit_spritesheet_159x100_5
-      rect:
-        serializedVersion: 2
-        x: 670
-        y: 100
-        width: 89
-        height: 71
-      alignment: 7
-      pivot: {x: .5, y: 0}
-    - name: rabbit_spritesheet_159x100_6
-      rect:
-        serializedVersion: 2
-        x: 23
+        x: 1104
         y: 0
-        width: 66
-        height: 77
+        width: 157
+        height: 203
       alignment: 7
       pivot: {x: .5, y: 0}
-    - name: rabbit_spritesheet_159x100_7
+    - name: rabbit_spritesheet_transformation_476x300_3
       rect:
         serializedVersion: 2
-        x: 176
+        x: 1534
+        y: 4
+        width: 296
+        height: 220
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: rabbit_spritesheet_transformation_476x300_4
+      rect:
+        serializedVersion: 2
+        x: 1998
         y: 0
-        width: 66
-        height: 77
+        width: 262
+        height: 262
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: rabbit_spritesheet_transformation_476x300_5
+      rect:
+        serializedVersion: 2
+        x: 2470
+        y: 4
+        width: 251
+        height: 251
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: rabbit_spritesheet_transformation_476x300_0
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 0
+        width: 59
+        height: 86
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: rabbit_spritesheet_transformation_476x300_1
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 0
+        width: 78
+        height: 133
       alignment: 7
       pivot: {x: .5, y: 0}
   spritePackingTag: 

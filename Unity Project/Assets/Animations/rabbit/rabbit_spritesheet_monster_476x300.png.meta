@@ -1,7 +1,5 @@
 fileFormatVersion: 2
-guid: b65052505ce95244fa55af0a2172016f
-labels:
-- Character
+guid: 491132057e2f9e54ebf2a8ba250cdcd0
 TextureImporter:
   serializedVersion: 2
   mipmaps:
@@ -47,67 +45,76 @@ TextureImporter:
     compressionQuality: 50
   spriteSheet:
     sprites:
-    - name: rabbit_spritesheet_159x100_1
+    - name: rabbit_spritesheet_monster_476x300_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 100
-        width: 83
-        height: 47
-      alignment: 7
-      pivot: {x: .5, y: 0}
-    - name: rabbit_spritesheet_159x100_2
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 100
-        width: 100
-        height: 59
-      alignment: 7
-      pivot: {x: .5, y: 0}
-    - name: rabbit_spritesheet_159x100_3
-      rect:
-        serializedVersion: 2
-        x: 353
-        y: 112
-        width: 117
-        height: 59
-      alignment: 7
-      pivot: {x: .5, y: 0}
-    - name: rabbit_spritesheet_159x100_4
-      rect:
-        serializedVersion: 2
-        x: 529
-        y: 100
-        width: 83
-        height: 77
-      alignment: 7
-      pivot: {x: .5, y: 0}
-    - name: rabbit_spritesheet_159x100_5
-      rect:
-        serializedVersion: 2
-        x: 670
-        y: 100
-        width: 89
-        height: 71
-      alignment: 7
-      pivot: {x: .5, y: 0}
-    - name: rabbit_spritesheet_159x100_6
-      rect:
-        serializedVersion: 2
-        x: 23
+        x: 87
         y: 0
-        width: 66
-        height: 77
+        width: 246
+        height: 246
       alignment: 7
-      pivot: {x: .5, y: 0}
-    - name: rabbit_spritesheet_159x100_7
+      pivot: {x: 0, y: 0}
+    - name: rabbit_spritesheet_monster_476x300_1
       rect:
         serializedVersion: 2
-        x: 176
+        x: 560
         y: 0
-        width: 66
-        height: 77
+        width: 261
+        height: 246
+      alignment: 7
+      pivot: {x: 0, y: 0}
+    - name: rabbit_spritesheet_monster_476x300_2
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 0
+        width: 253
+        height: 238
+      alignment: 7
+      pivot: {x: 0, y: 0}
+    - name: rabbit_spritesheet_monster_476x300_3
+      rect:
+        serializedVersion: 2
+        x: 1513
+        y: 0
+        width: 265
+        height: 257
+      alignment: 7
+      pivot: {x: 0, y: 0}
+    - name: rabbit_spritesheet_monster_476x300_4
+      rect:
+        serializedVersion: 2
+        x: 1993
+        y: 0
+        width: 246
+        height: 246
+      alignment: 7
+      pivot: {x: 0, y: 0}
+    - name: rabbit_spritesheet_monster_476x300_5
+      rect:
+        serializedVersion: 2
+        x: 2466
+        y: 0
+        width: 261
+        height: 246
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: rabbit_spritesheet_monster_476x300_6
+      rect:
+        serializedVersion: 2
+        x: 2958
+        y: 0
+        width: 253
+        height: 238
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: rabbit_spritesheet_monster_476x300_7
+      rect:
+        serializedVersion: 2
+        x: 3419
+        y: 0
+        width: 265
+        height: 257
       alignment: 7
       pivot: {x: .5, y: 0}
   spritePackingTag: 
