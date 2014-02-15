@@ -18,6 +18,10 @@ public class EnemyMovement : MonoBehaviour {
 	{
 		this.enemyReference = enemyReference;
 		this.orientation = (Random.value > 0.5f ? Orientation.Left : Orientation.Right);
+		if (orientation == Orientation.Left)
+		{
+			this.transform.localScale = new Vector3(-this.transform.localScale.x, this.transform.localScale.y, this.transform.localScale.z);
+		}
 		this.pathProgress = 0;
 		this.GetComponent<Rigidbody2D>().Sleep();
 	}
