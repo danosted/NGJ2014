@@ -19,6 +19,8 @@ public class Weapon : MonoBehaviour {
 	private Projectile projectile;
 	[SerializeField]
 	private Transform pivot;
+	[SerializeField]
+	private Transform gunModel;
 
 	private bool isFiring;
 	private bool isCooling;
@@ -26,7 +28,6 @@ public class Weapon : MonoBehaviour {
 	public void StartFiring()
 	{
 		isFiring = true;
-		StartCoroutine(PointGun());
 		StartCoroutine(StartFiringWeapon());
 	}
 
@@ -34,25 +35,6 @@ public class Weapon : MonoBehaviour {
 	{
 		isFiring = false;
 	}
-
-//	private IEnumerator PointGun()
-//	{
-//		Vector3 curMousePos;
-//		Vector3 lastMousePos = Vector3.zero;
-//		while(isFiring)
-//		{
-//			curMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-//			curMousePos = new Vector3(curMousePos.x, curMousePos.y, 0f);
-//			Vector3 dir = (curMousePos - lastMousePos) - barrel.position;
-//			dir.Normalize();
-//			float angle = Mathf.Atan(dir.y/dir.x);
-//			Debug.Log(angle);
-//			transform.RotateAround(pivot.position, Vector3.up, angle);
-//			yield return null;
-//			lastMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-//			lastMousePos = new Vector3(lastMousePos.x, lastMousePos.y, 0f);
-//		}
-//	}
 
 	private IEnumerator StartFiringWeapon()
 	{
