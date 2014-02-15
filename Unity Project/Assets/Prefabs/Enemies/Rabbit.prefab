@@ -30,7 +30,7 @@ GameObject:
   - 212: {fileID: 21200000}
   - 95: {fileID: 9500000}
   m_Layer: 0
-  m_Name: Animator
+  m_Name: morph_animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +94,7 @@ Animator:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2ac525b317b6e5a41b7d0cf65d84279e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6abb90adc5b52964b81256bb777077a5, type: 2}
   m_CullingMode: 0
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
@@ -145,7 +145,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: b65052505ce95244fa55af0a2172016f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3a89499001e9a1b4382756b221d22607, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
