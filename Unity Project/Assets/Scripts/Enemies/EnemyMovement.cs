@@ -62,7 +62,14 @@ public class EnemyMovement : MonoBehaviour {
 			}
 			else
 			{
-				enemyPath[index] = enemyPathObject.transform.GetChild(i);
+				enemyPath[index] = ((GameObject)Instantiate(enemyPathObject.transform.GetChild(i).gameObject)).transform;
+			}
+		}
+		if (Random.value >= 0.5f)
+		{
+			foreach(Transform pathNode in enemyPath)
+			{
+				pathNode.position = new Vector3(-pathNode.position.x, pathNode.position.y, pathNode.position.z);
 			}
 		}
 		return enemyPath;
