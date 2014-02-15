@@ -17,7 +17,7 @@ public class EnemyMovement : MonoBehaviour {
 	public void Init(Enemy enemyReference)
 	{
 		this.enemyReference = enemyReference;
-		this.orientation = (Random.value > 0.5f ? Orientation.Right : Orientation.Right);
+		this.orientation = (Random.value > 0.5f ? Orientation.Left : Orientation.Right);
 		this.pathProgress = 0;
 		this.GetComponent<Rigidbody2D>().Sleep();
 	}

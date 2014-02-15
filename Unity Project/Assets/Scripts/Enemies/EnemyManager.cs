@@ -14,9 +14,8 @@ public class EnemyManager : MonoBehaviour {
 	[SerializeField]
 	private List<Enemy> enemyPrefabs;
 	private Vector2 enemySpawnLimits;
-	private int enemySpawnCount;
-	private List<int> enemySpawnIntervals;
-	private int enemySpawnTypes;
+	private int enemySpawnMin;
+	private int enemySpawnMax;
 	private Dictionary<EnemyType, Transform[]> enemyPathsLeft;
 	private Dictionary<EnemyType, Transform[]> enemyPathsRight;
 
@@ -32,11 +31,9 @@ public class EnemyManager : MonoBehaviour {
 	void Init () 
 	{
 		enemyPool = new List<Enemy>();
-		enemySpawnLimits = new Vector2(2, 5);
-		enemySpawnCount = 0;
-		enemySpawnIntervals = new List<int>();
-		enemySpawnIntervals.AddRange(new int[3] {3, 10000, 100000});
-		enemySpawnTypes = 0;
+		enemySpawnLimits = new Vector2(1, 3);
+		enemySpawnMin = 0;
+		enemySpawnMax = 1;
 
 		rabbitSpawnCount = 0;
 		
@@ -44,6 +41,8 @@ public class EnemyManager : MonoBehaviour {
 		enemyPathsRight = new Dictionary<EnemyType, Transform[]>();
 
 		GenerateEnemyPaths();
+
+		GameManager.Instance.OnStateChanged += this.OnStateChanged;
 
 		Invoke("SpawnEnemyLoop", Random.Range (enemySpawnLimits.x, enemySpawnLimits.y));
 	}
@@ -68,8 +67,7 @@ public class EnemyManager : MonoBehaviour {
 	
 	private void SpawnEnemyLoop()
 	{
-		enemySpawnLimits *= 0.95f;
-		Enemy enemy = GetAvailableEnemy((EnemyType)Random.Range(0, enemySpawnTypes + 1));
+		Enemy enemy = GetAvailableEnemy((EnemyType)Random.Range(enemySpawnMin, enemySpawnMax + 1));
 		enemy.Init();
 		enemy.SetEnemyManager(this);
 		if (enemy.GetEnemyType() == EnemyType.Rabbit && (rabbitSpawnCount < rabbitSpecialNumber))
@@ -79,11 +77,6 @@ public class EnemyManager : MonoBehaviour {
 			{
 				enemy.SetIsSpecial(true);
 			}
-		}
-
-		if (++enemySpawnCount >= enemySpawnIntervals[enemySpawnTypes])
-		{
-			enemySpawnTypes++;
 		}
 		
 		Invoke("SpawnEnemyLoop", Random.Range (enemySpawnLimits.x, enemySpawnLimits.y));
@@ -118,5 +111,14 @@ public class EnemyManager : MonoBehaviour {
 			enemyPath = enemyPathsRight[enemyType];
 		}
 		return enemyPath;
+	}
+
+	private void OnStateChanged(int currentState, float changeTime)
+	{
+		if (currentState + 1 < enemyPrefabs.Count)
+		{
+			enemySpawnMin++;
+			enemySpawnMax++;
+		}
 	}
 }

@@ -40,17 +40,18 @@ public class Enemy : MonoBehaviour {
 		if(!isSpecial || transform.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Rabbit_Monster_Move") && !rigidbody2D.IsSleeping())
 		{
 			this.health--;
+			GetComponentInChildren<HealthbarScript>().DamageTaken(1);
 			GetComponent<EnemyMovement>().GotShot(projectile);
 		}
-		else
+		else if (!isSpecialAnimating)
 		{	
+			this.isSpecialAnimating = true;
 			StartCoroutine("WaitForSpecialAnimation");
 		}
 	}
 
 	private IEnumerator WaitForSpecialAnimation()
 	{ 
-		this.isSpecialAnimating = true;
 		transform.GetComponentInChildren<Animator>().SetBool("SpecialAnimating", true);
 		rigidbody2D.Sleep();
 		GameManager.Instance.GoToNextState();
@@ -105,6 +106,10 @@ public enum EnemyType
 {
 	Butterfly,
 	Rabbit,
+	Gnome,
+	UFO,
+	Plane,
+	Cthulhu,
 }
 
 public enum Orientation

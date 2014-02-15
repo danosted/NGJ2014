@@ -42,6 +42,8 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 11400000, guid: fa5f3bcf5b8901149b8e642d1b7dd7a6, type: 2}
   - {fileID: 11400000, guid: 006c6c5de9dab06469d2ef77df7a6d4f, type: 2}
+  - {fileID: 11400002, guid: 42d7473d6cd7c7645b5c668f92444c21, type: 2}
+  - {fileID: 11400002, guid: 376705642d295c143b488ae3ec8e868f, type: 2}
   rabbitSpecialNumber: 3
 --- !u!1001 &100100000
 Prefab:

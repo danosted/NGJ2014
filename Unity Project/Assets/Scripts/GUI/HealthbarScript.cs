@@ -14,7 +14,7 @@ public class HealthbarScript : MonoBehaviour {
 
 		if(transform.parent.GetComponent<Enemy>())
 		{
-//			maxHealth = transform.parent.GetComponent<Enemy>().GetHealth();
+			maxHealth = transform.parent.GetComponent<Enemy>().GetHealth();
 		}
 		else
 		{
@@ -27,7 +27,7 @@ public class HealthbarScript : MonoBehaviour {
 
 	public void DamageTaken(float damage)
 	{
-		currentHealth = (currentHealth-damage >= 0) ? currentHealth-damage : 0f;
+		currentHealth = Mathf.Max(currentHealth - damage, 0);
 		float cutOffValue = (maxHealth-currentHealth)/maxHealth;
 		myMaterial.SetFloat("_Cutoff", cutOffValue);
 	}
