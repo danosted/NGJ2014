@@ -40,9 +40,7 @@ public class Weapon : MonoBehaviour {
 			pGO.transform.parent = transform;
 			Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			Vector3 dir = new Vector3(mousepos.x, mousepos.y, 0f) - barrel.transform.position;
-
 			dir.Normalize();
-			Debug.Log(dir);
 			dir *= firingRange;
 			pGO.GetComponent<Projectile>().Shoot(projectileSpeed, projectileDamage, projectileAoe, firingRange, dir);
 			yield return StartCoroutine(WaitForCooldown());
