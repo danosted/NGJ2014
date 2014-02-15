@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour {
 
 	private void OnStateChanged(int currentState, float changeTime)
 	{
-		if (currentState == 1)
+		if (currentState == 1 && !isSpecial)
 		{
 			GetComponent<EnemyMovement>().Deactivate();
 		}
