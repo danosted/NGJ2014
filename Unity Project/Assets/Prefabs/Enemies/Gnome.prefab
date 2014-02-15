@@ -13,7 +13,7 @@ GameObject:
   - 50: {fileID: 5000000}
   - 58: {fileID: 5800000}
   m_Layer: 0
-  m_Name: Rabbit
+  m_Name: Gnome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,7 +194,7 @@ Animator:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0cbe0a6f33806004eb75e686d361fb4f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6f0f552d94457c64788e50e1ca3343df, type: 2}
   m_CullingMode: 0
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
@@ -210,8 +210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda42ed3780b6454f9441f692e1a8e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
-  health: 3
+  type: 2
+  health: 4
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -223,8 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c12b4c1d8b3874d49b068d5528196b1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 2
-  enemyPathObject: {fileID: 100010, guid: f87210a162876f64886c4d4859eb554e, type: 2}
+  movementSpeed: 4
+  enemyPathObject: {fileID: 100010, guid: 80614cabbdd3adc449c0f55a2c6a05d6, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,7 +258,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: b65052505ce95244fa55af0a2172016f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5446bc16082541740887a4fab4465698, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21200002
 SpriteRenderer:
