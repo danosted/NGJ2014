@@ -14,10 +14,4 @@ public class Rock : Projectile {
 		rigidbody2D.AddForce(new Vector2(this.direction.x, this.direction.y)*this.speed);
 	}
 
-	void OnCollisionEnter2D(Collision2D col)
-	{
-		if(col.gameObject.GetComponent<Enemy>())
-			this.KillProjectile();
-	}
-
 }

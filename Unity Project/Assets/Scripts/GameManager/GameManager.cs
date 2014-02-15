@@ -7,13 +7,9 @@ public class GameManager : MonoBehaviour {
 	public event OnStateChangedDelegate OnStateChanged;
 
 	[SerializeField]
-	private Transform playerSpawnPosition;
-
-	[SerializeField]
 	private float stateChangeTime;
 
 	public static GameManager Instance { get; private set;}
-
 
 	private int currentState;
 	private int score;
