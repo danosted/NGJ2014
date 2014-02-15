@@ -50,8 +50,10 @@ public class Projectile : MonoBehaviour {
 			hit = true;
 			if(aoe > 0f)
 			{
-				GameObject splash = Instantiate(gameObject, transform.position, Quaternion.identity) as GameObject;
-				splash.GetComponent<CircleCollider2D>().radius = aoe * 2f;
+				float tmpAoe = aoe;
+				this.aoe = 0f;
+				GameObject splash = Instantiate(this.gameObject, transform.position, Quaternion.identity) as GameObject;
+				splash.GetComponent<CircleCollider2D>().radius = tmpAoe * 2f;
 			}
 			KillProjectile();
 		}
