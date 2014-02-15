@@ -73,7 +73,12 @@ public class Enemy : MonoBehaviour {
 	{
 		this.enemyManager = enemyManager;
 	}
-	
+
+	public EnemyManager GetEnemyManager()
+	{
+		return this.enemyManager;
+	}
+
 	public EnemyType GetEnemyType()
 	{
 		return this.type;

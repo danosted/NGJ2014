@@ -4,21 +4,20 @@ using System.Collections;
 public class EnemyMovement : MonoBehaviour {
 
 	private Transform[] enemyPath;
+	private int enemyPathIndex;
 	private Enemy enemyReference;
 	private float pathProgress;
+	private EnemyManager enemyManager;
 	[SerializeField]
-	private float MovementSpeed;
+	private float movementSpeed;
 	[SerializeField]
 	private GameObject enemyPathObject;
+	private Orientation orientation;
 
 	public void Init(Enemy enemyReference)
 	{
-		if (enemyPath == null)
-		{
-			enemyPath = this.GetEnemyPath(enemyPathObject);
-		}
 		this.enemyReference = enemyReference;
-		this.transform.position = enemyPath[0].position;
+		this.orientation = (Random.value > 0.5f ? Orientation.Right : Orientation.Right);
 		this.pathProgress = 0;
 		this.GetComponent<Rigidbody2D>().Sleep();
 	}
@@ -26,6 +25,7 @@ public class EnemyMovement : MonoBehaviour {
 	public void Deactivate()
 	{
 		this.enabled = false;
+		rigidbody2D.gravityScale = 0.3f;
 	}
 
 	void Update () 
@@ -36,8 +36,30 @@ public class EnemyMovement : MonoBehaviour {
 		}
 		else if(!enemyReference.GetIsSpecialAnimating())
 		{
-			iTween.PutOnPath(gameObject, enemyPath, pathProgress);
-			pathProgress += MovementSpeed * 0.01f * Time.deltaTime;
+			if (enemyPath == null)
+			{   
+				// find enemyPath!
+				if (!enemyManager)
+				{
+					// Find enemyManager!
+					if (!enemyReference)
+					{
+						enemyReference = GetComponent<Enemy>();
+					}
+					enemyManager = enemyReference.GetEnemyManager();
+				}
+				enemyPath = enemyManager.GetEnemyPath(enemyReference.GetEnemyType(), orientation);
+				transform.position = enemyPath[0].position;
+				enemyPathIndex++;
+			}
+			transform.position = Vector3.MoveTowards(transform.position, enemyPath[enemyPathIndex].position, Time.deltaTime * movementSpeed);
+			if (transform.position == enemyPath[enemyPathIndex].position)
+			{
+				if (++enemyPathIndex == enemyPath.Length)
+				{
+					this.Deactivate();
+				}
+			}
 		}
 	}
 
@@ -47,47 +69,12 @@ public class EnemyMovement : MonoBehaviour {
 		if (isDead)
 		{
 			collider2D.isTrigger = false;
-			rigidbody2D.AddForce(new Vector2(projectile.GetDirection().y, -projectile.GetDirection().x * 10 * ((-projectile.GetDirection().x < 0) ? -1 : 1)));
+			rigidbody2D.AddForce(new Vector2(projectile.GetDirection().y, -projectile.GetDirection().x * ((-projectile.GetDirection().x < 0) ? -1 : 1)) * 80);
 			this.Deactivate();
 		}
 	}
-	private Transform[] GetEnemyPath(GameObject enemyPathObject)
+	public GameObject GetEnemyPathObject()
 	{
-		int enemyPathSize = 1;
-		for(int i = 0; i < enemyPathObject.transform.childCount - 1; i++)
-		{
-			enemyPathSize += Mathf.FloorToInt((enemyPathObject.transform.GetChild(i + 1).position - enemyPathObject.transform.GetChild(i).position).magnitude);
-		}
-		Transform[] enemyPath = new Transform[enemyPathSize];
-		int index = 0;
-		
-		for(int i = 0; i < enemyPathObject.transform.childCount; i++)
-		{
-			if (i + 1 < enemyPathObject.transform.childCount)
-			{
-				Transform currentNode = enemyPathObject.transform.GetChild(i);
-				Transform nextNode = enemyPathObject.transform.GetChild(i + 1);
-				int nodeAmount = Mathf.FloorToInt((nextNode.position - currentNode.position).magnitude);
-				for(int j = 0; j < nodeAmount; j++)
-				{
-					GameObject newNodeObject = (GameObject)(Instantiate(currentNode.gameObject, currentNode.position + (nextNode.position - currentNode.position) / nodeAmount * j, Quaternion.identity));
-//					newNodeObject.transform.parent = enemyManager.gameObject.transform;
-					Transform newNode = newNodeObject.transform;
-					enemyPath[index++] = newNode;
-				}
-			}
-			else
-			{
-				enemyPath[index] = ((GameObject)Instantiate(enemyPathObject.transform.GetChild(i).gameObject)).transform;
-			}
-		}
-		if (Random.value >= 0.5f)
-		{
-			foreach(Transform pathNode in enemyPath)
-			{
-				pathNode.position = new Vector3(-pathNode.position.x, pathNode.position.y, pathNode.position.z);
-			}
-		}
-		return enemyPath;
+		return this.enemyPathObject;
 	}
 }
