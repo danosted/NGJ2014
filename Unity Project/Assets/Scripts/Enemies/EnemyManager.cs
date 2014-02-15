@@ -1,39 +1,39 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour {
-
+	
 	private List<Enemy> enemyPool;
-
+	
 	[SerializeField]
 	private GameObject enemyPathObject;
 	[SerializeField]
 	private List<Enemy> enemyPrefabs;
-
+	private Vector2 enemySpawnLimits;
+	private int enemySpawnCount;
+	private List<int> enemySpawnIntervals;
+	private int enemySpawnTypes;
+	
 	void Awake()
 	{
 		this.Init();
 	}
-
+	
 	void Init () 
 	{
 		enemyPool = new List<Enemy>();
+		enemySpawnLimits = new Vector2(2, 5);
+		enemySpawnCount = 0;
+		enemySpawnIntervals = new List<int>();
+		enemySpawnIntervals.AddRange(new int[3] {3, 10000, 100000});
+		enemySpawnTypes = 0;
+		
+		Invoke("SpawnEnemyLoop", Random.Range (enemySpawnLimits.x, enemySpawnLimits.y));
 	}
-	 
-	// Update is called once per frame
-	void Update () 
-	{
-		if(Input.GetKeyDown(KeyCode.B))
-		{
-			GetAvailableEnemy(EnemyType.Butterfly).Init();
-		}
-		else if(Input.GetKeyDown(KeyCode.R))
-		{
-			GetAvailableEnemy(EnemyType.Rabbit).Init();
-		}
-	}
-
+	
 	private Enemy GetAvailableEnemy(EnemyType enemyType)
 	{
 		Enemy enemy = enemyPool.Find(e => e.GetEnemyType() == enemyType && !e.gameObject.activeSelf);
@@ -44,12 +44,25 @@ public class EnemyManager : MonoBehaviour {
 		}
 		return enemy;
 	}
-
+	
 	private Enemy InstantiateEnemy(EnemyType enemyType)
 	{
 		Enemy enemy = ((GameObject)Instantiate(enemyPrefabs.Find(e => e.GetEnemyType() == enemyType).gameObject)).GetComponent<Enemy>();
 		enemy.SetEnemyManager(this);
-		enemy.Init();
 		return enemy;
+	}
+	
+	private void SpawnEnemyLoop()
+	{
+		enemySpawnLimits *= 0.95f;
+		Debug.Log ("EnemySpawnCount: " + enemySpawnCount);
+		GetAvailableEnemy((EnemyType)Random.Range(0, enemySpawnTypes + 1)).Init();
+		if (++enemySpawnCount >= enemySpawnIntervals[enemySpawnTypes])
+		{
+			enemySpawnTypes++;
+			Debug.Log ("EnemySpawnTypes updated");
+		}
+		
+		Invoke("SpawnEnemyLoop", Random.Range (enemySpawnLimits.x, enemySpawnLimits.y));
 	}
 }
