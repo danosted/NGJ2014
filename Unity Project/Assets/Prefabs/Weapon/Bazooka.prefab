@@ -97,7 +97,7 @@ MonoBehaviour:
   firingRange: 12
   projectileSpeed: 1
   projectileDamage: 1
-  projectileAoe: 4
+  projectileAoe: 1.5
   barrel: {fileID: 400004}
   projectile: {fileID: 11400000, guid: 7bc3de321be0a0945a3cd9df838aa1d7, type: 2}
   pivot: {fileID: 0}
