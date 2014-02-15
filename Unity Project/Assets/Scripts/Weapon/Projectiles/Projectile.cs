@@ -38,14 +38,25 @@ public class Projectile : MonoBehaviour {
 		}
 	}
 
-//	public IEnumerator ShootHoming(float speed, float damage, float aoe, Transform target)
-//	{
-//
-//	}
-
 	void OnCollisionEnter2D(Collision2D collision)
 	{
 		if(collision.gameObject.GetComponent<Enemy>())
+		{
+			hit = true;
+			if(aoe > 0f)
+			{
+				float tmpAoe = aoe;
+				this.aoe = 0f;
+				GameObject splash = Instantiate(this.gameObject, transform.position, Quaternion.identity) as GameObject;
+				splash.GetComponent<CircleCollider2D>().radius = tmpAoe * 2f;
+			}
+			KillProjectile();
+		}
+	}
+
+	void OnColliderEnter2D(Collider2D collider)
+	{
+		if(collider.GetComponent<Enemy>())
 		{
 			hit = true;
 			if(aoe > 0f)

@@ -38,10 +38,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d97398ccb366844687ae597a45fd0b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPathObject: {fileID: 100010, guid: f87210a162876f64886c4d4859eb554e, type: 2}
   enemyPrefabs:
   - {fileID: 11400000, guid: fa5f3bcf5b8901149b8e642d1b7dd7a6, type: 2}
   - {fileID: 11400000, guid: 006c6c5de9dab06469d2ef77df7a6d4f, type: 2}
+  - {fileID: 11400000, guid: 9368b70dc58915c49a4c63175177e2f9, type: 2}
+  - {fileID: 11400002, guid: 376705642d295c143b488ae3ec8e868f, type: 2}
   rabbitSpecialNumber: 3
 --- !u!1001 &100100000
 Prefab:

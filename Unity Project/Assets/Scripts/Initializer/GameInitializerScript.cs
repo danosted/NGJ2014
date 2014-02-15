@@ -5,6 +5,12 @@ using System.Collections.Generic;
 public class GameInitializerScript : MonoBehaviour {
 
 	[SerializeField]
+	private GameObject startAnim;
+	[SerializeField]
+	private TextMesh startText;
+	private bool isPlaying = true;
+
+	[SerializeField]
 	public GameObject[] nonDependents;
 
 	[SerializeField]
@@ -18,6 +24,21 @@ public class GameInitializerScript : MonoBehaviour {
 
 	void Awake () 
 	{
+		StartCoroutine(StartAnimation());
+	}
+
+	private IEnumerator StartAnimation()
+	{
+		while(isPlaying)
+		{
+			if(Input.GetMouseButton(0))
+			{
+				isPlaying = false;
+				Destroy(startAnim);
+				Destroy(startText.gameObject);
+			}
+			yield return null;
+		}
 		InstantiateObjects();
 	}
 

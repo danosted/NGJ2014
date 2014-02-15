@@ -52,8 +52,8 @@ TextureImporter:
         y: 0
         width: 102
         height: 136
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 7
+      pivot: {x: .5, y: 0}
     - name: gnome_spritesheet_102x136_1
       rect:
         serializedVersion: 2
@@ -61,8 +61,8 @@ TextureImporter:
         y: 1
         width: 95
         height: 135
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 7
+      pivot: {x: .5, y: 0}
     - name: gnome_spritesheet_102x136_2
       rect:
         serializedVersion: 2
@@ -70,7 +70,7 @@ TextureImporter:
         y: 0
         width: 89
         height: 136
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 7
+      pivot: {x: .5, y: 0}
   spritePackingTag: 
   userData: 

@@ -9,8 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 400002}
   - 212: {fileID: 21200000}
-  - 60: {fileID: 6000000}
   - 50: {fileID: 5000000}
+  - 68: {fileID: 6800000}
   m_Layer: 0
   m_Name: Hill
   m_TagString: Untagged
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.95869923, z: 0}
+  m_LocalPosition: {x: 0, y: -.266540527, z: 0}
   m_LocalScale: {x: 1.52342057, y: 1.35545385, z: 1.35545385}
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,8 +44,8 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!60 &6000000
-PolygonCollider2D:
+--- !u!68 &6800000
+EdgeCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -53,15 +53,12 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Poly:
-    m_Paths:
-    - - {x: 4.54735136, y: -.742705703}
-      - {x: 2.40179324, y: .432680845}
-      - {x: .35463649, y: 2.12171626}
-      - {x: -.708032608, y: 2.12648082}
-      - {x: -3.19820619, y: -.169600442}
-      - {x: -8.48247719, y: -2.14270568}
-      - {x: 8.53333378, y: -2.16666675}
+  m_Points:
+  - {x: -6.41224051, y: -3.87056708}
+  - {x: -.532313287, y: -1.37481558}
+  - {x: .884005547, y: -1.36464953}
+  - {x: 4.71066618, y: -3.34978533}
+  - {x: 6.23932838, y: -3.79223561}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -81,9 +78,9 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_SortingLayerID: 4184402217
-  m_Sprite: {fileID: 21300000, guid: 0a8fdeb6d1795a3429c0f6442ae07ba6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a1bad84d0e9a1474580e019330852247, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

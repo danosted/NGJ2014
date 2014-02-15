@@ -11,6 +11,8 @@ public class Character : MonoBehaviour {
 	private Transform gunPosition;
 	[SerializeField]
 	private Weapon[] weapons;
+	[SerializeField]
+	private HealthbarScript healthBar;
 
 	private Weapon weapon;
 	private bool facingLeft;
@@ -33,14 +35,15 @@ public class Character : MonoBehaviour {
 		GameObject weaponGO = Instantiate(weapon.gameObject, gunPosition.position, weapon.transform.rotation) as GameObject;
 		weaponGO.transform.parent = transform;
 		weapon = weaponGO.GetComponent<Weapon>();
-
 		gameManInstance = GameManager.Instance;
 		gameManInstance.OnStateChanged += OnStateChange;
+		GetComponent<GameInitializer2Object>().OnInitializeWithDependencies += Initialize;
 	}
 
-	public void Initialize()
+	public void Initialize(GameObject[] dependencies)
 	{
-
+		healthBar = dependencies[0].GetComponent<HealthbarScript>();
+		healthBar.Init(health);
 	}
 #if UNITY_EDITOR
 	void Update()
@@ -106,6 +109,22 @@ public class Character : MonoBehaviour {
 	{
 		this.weapon.StopFiring();
 		isFiring = false;
+	}
+
+	void OnTriggerEnter2D(Collider2D collider)
+	{
+		if(collider.GetComponent<Enemy>())
+		{
+			if(health-1 > 0)
+			{
+				health--;
+			} else
+			{
+				gameManInstance.GameOver();
+				return;
+			}
+			healthBar.DamageTaken(1f);
+		}
 	}
 
 	private void OnStateChange(int state, float stateChangeTime)

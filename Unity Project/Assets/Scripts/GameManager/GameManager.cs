@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour {
 	private float stateChangeTime;
 	[SerializeField]
 	private float comboKillInterval;
+	[SerializeField]
+	private SpriteRenderer whiteScreen;
 
 	public static GameManager Instance { get; private set;}
 
@@ -59,6 +61,22 @@ public class GameManager : MonoBehaviour {
 	public void IncrementFrameKillCount()
 	{
 		frameKillCount++;
+	}
+
+	public void GameOver()
+	{
+		whiteScreen.collider2D.enabled = true;
+		StartCoroutine(FadeoutReset());
+	}
+
+	private IEnumerator FadeoutReset()
+	{
+		while(whiteScreen.color.a < 1f)
+		{
+			whiteScreen.color = Color.Lerp(whiteScreen.color, Color.white, Time.deltaTime);
+			yield return null;
+		}
+		Application.LoadLevel(0);
 	}
 
 }

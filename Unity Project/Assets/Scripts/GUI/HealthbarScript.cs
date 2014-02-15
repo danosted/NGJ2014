@@ -12,17 +12,20 @@ public class HealthbarScript : MonoBehaviour {
 
 	void Start () {
 
-		if(transform.parent.GetComponent<Enemy>())
+		if(transform.parent)
 		{
-//			maxHealth = transform.parent.GetComponent<Enemy>().GetHealth();
+			maxHealth = transform.parent.GetComponent<Enemy>().GetHealth();
+			currentHealth = maxHealth;
+			myMaterial = greenPart.renderer.material;
 		}
-		else
-		{
-			maxHealth = transform.parent.GetComponent<Character>().GetHealth();
-		}
+		
+	}
+
+	public void Init(float health)
+	{
+		maxHealth = health;
 		currentHealth = maxHealth;
 		myMaterial = greenPart.renderer.material;
-		
 	}
 
 	public void DamageTaken(float damage)
