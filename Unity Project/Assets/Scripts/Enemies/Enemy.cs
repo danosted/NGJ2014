@@ -23,10 +23,13 @@ public class Enemy : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collider)
 	{
-		if (collider.GetComponent<Projectile>())
+		Projectile projectile = collider.GetComponent<Projectile>();
+		if (projectile)
 		{
 			this.GetComponent<Rigidbody2D>().WakeUp();
 			transform.collider2D.isTrigger = false;
+			rigidbody2D.AddForce(new Vector2(projectile.GetDirection().x, projectile.GetDirection().y) * 10);
+			rigidbody2D.AddForce(new Vector2(projectile.GetDirection().y, -projectile.GetDirection().x * 10) * 10);
 			isShot = true;
 		}
 	}

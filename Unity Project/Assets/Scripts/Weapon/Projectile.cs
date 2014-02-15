@@ -49,6 +49,11 @@ public class Projectile : MonoBehaviour {
 		KillProjectile();
 	}
 
+	public Vector3 GetDirection()
+	{
+		return this.direction;
+	}
+
 	private void KillProjectile()
 	{
 		StopCoroutine("Shooting");
