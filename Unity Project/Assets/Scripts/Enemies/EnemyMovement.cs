@@ -18,7 +18,6 @@ public class EnemyMovement : MonoBehaviour {
 		}
 		this.transform.position = enemyPath[0].position;
 		this.pathProgress = 0;
-		this.GetComponent<Rigidbody2D>().Sleep();
 	}
 
 	private void Deactivate()
@@ -30,6 +29,7 @@ public class EnemyMovement : MonoBehaviour {
 	{
 		if (GetComponent<Enemy>().GetIsShot() || pathProgress >= 1)
 		{
+			Debug.Log ("Is Shot");
 			this.Deactivate();
 		}
 		iTween.PutOnPath(gameObject, enemyPath, pathProgress);
