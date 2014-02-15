@@ -17,6 +17,10 @@ public class Weapon : MonoBehaviour {
 	private Transform barrel;
 	[SerializeField]
 	private Projectile projectile;
+	[SerializeField]
+	private Transform pivot;
+	[SerializeField]
+	private Transform gunModel;
 
 	private bool isFiring;
 	private bool isCooling;
@@ -36,13 +40,10 @@ public class Weapon : MonoBehaviour {
 	{
 		while(isFiring && !isCooling)
 		{
-			GameObject pGO = Instantiate(projectile.gameObject, barrel.transform.position, projectile.transform.rotation) as GameObject;
-			pGO.transform.parent = transform;
+			GameObject pGO = Instantiate(projectile.gameObject, barrel.position, projectile.transform.rotation) as GameObject;
 			Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			Vector3 dir = new Vector3(mousepos.x, mousepos.y, 0f) - barrel.transform.position;
-
+			Vector3 dir = new Vector3(mousepos.x, mousepos.y, 0f) - barrel.position;
 			dir.Normalize();
-			Debug.Log(dir);
 			dir *= firingRange;
 			pGO.GetComponent<Projectile>().Shoot(projectileSpeed, projectileDamage, projectileAoe, firingRange, dir);
 			yield return StartCoroutine(WaitForCooldown());
