@@ -20,6 +20,14 @@ public class Enemy : MonoBehaviour {
 		GameManager.Instance.OnStateChanged += this.OnStateChanged;
 	}
 
+	void Update()
+	{
+		if (transform.position.magnitude > 30)
+		{
+			this.DeactivateObject();
+		}
+	}
+
 	public void DeactivateObject()
 	{
 		this.gameObject.SetActive(false);
@@ -37,7 +45,9 @@ public class Enemy : MonoBehaviour {
 
 	private void GotShot(Projectile projectile)
 	{
-		if(!isSpecial || transform.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Rabbit_Monster_Move") && !rigidbody2D.IsSleeping())
+//		iTween.PunchScale(gameObject, Vector3.one * 0.5f, 0.5f);
+//		iTween.PunchRotation(gameObject, new Vector3(0.5f, 0.5f, 0), 0.5f);
+		if(!isSpecial || transform.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Rabbit_Monster_Move"))
 		{
 			this.health--;
 			GetComponentInChildren<HealthbarScript>().DamageTaken(1);
@@ -58,7 +68,6 @@ public class Enemy : MonoBehaviour {
 		yield return new WaitForSeconds(0.5f);
 		transform.GetComponentInChildren<Animator>().SetBool("SpecialAnimating", false);
 		rigidbody2D.WakeUp ();
-		this.isSpecialAnimating = false;
 	}
 
 	private void OnStateChanged(int currentState, float changeTime)

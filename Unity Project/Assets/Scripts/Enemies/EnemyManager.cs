@@ -8,9 +8,6 @@ using Random = UnityEngine.Random;
 public class EnemyManager : MonoBehaviour {
 	
 	private List<Enemy> enemyPool;
-	
-	[SerializeField]
-	private GameObject enemyPathObject;
 	[SerializeField]
 	private List<Enemy> enemyPrefabs;
 	private Vector2 enemySpawnLimits;
