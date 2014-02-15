@@ -97,7 +97,7 @@ MonoBehaviour:
   firingRange: 12
   projectileSpeed: 1
   projectileDamage: 1
-  projectileAoe: 4
+  projectileAoe: 1.5
   barrel: {fileID: 400004}
   projectile: {fileID: 11400000, guid: 7bc3de321be0a0945a3cd9df838aa1d7, type: 2}
   pivot: {fileID: 0}
@@ -123,7 +123,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: c83e160d73f76514b8300541b95fb0b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6111b582750709849968265b72d6b94a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

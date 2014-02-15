@@ -30,15 +30,15 @@ public class CameraEffects : MonoBehaviour {
 	{
 		origin = transform.position;
 		orig_col = backgroundSprite.color;
+		GameManager.Instance.OnStateChanged += OnStateChange;
 	}
 
-	void Update()
+	private void OnStateChange(int state, float stateChangeTime)
 	{
-		if(Input.GetMouseButtonDown(0))
-		{
-			StartCameraShake();
-			StartColourShow();
-		}
+		shakeTime = stateChangeTime;
+		colorChangeTime = stateChangeTime;
+		StartCameraShake();
+		StartColourShow();
 	}
 
 	public void StartCameraShake()
