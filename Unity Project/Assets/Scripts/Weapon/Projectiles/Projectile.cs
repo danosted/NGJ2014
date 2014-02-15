@@ -43,10 +43,14 @@ public class Projectile : MonoBehaviour {
 //
 //	}
 
-	void OnTriggerEnter2D(Collider2D collider)
+	void OnCollisionEnter2D(Collision2D collision)
 	{
-		hit = true;
-		KillProjectile();
+		if(collision.gameObject.GetComponent<Enemy>())
+		{
+			//TODO: Do damage
+			hit = true;
+			KillProjectile();
+		}
 	}
 
 	public Vector3 GetDirection()
