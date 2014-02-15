@@ -20,21 +20,30 @@ public class CameraEffects : MonoBehaviour {
 	private float colMag = 1f;
 	[SerializeField]
 	private float colChangeFreq = 1f;
+	[SerializeField]
+	private SpriteRenderer backgroundSprite;
 
 	private Vector3 origin;
 	private Color orig_col;
+
+	void Start()
+	{
+		origin = transform.position;
+		orig_col = backgroundSprite.color;
+	}
 
 	void Update()
 	{
 		if(Input.GetMouseButtonDown(0))
 		{
 			StartCameraShake();
+			StartColourShow();
 		}
 	}
 
 	public void StartCameraShake()
 	{
-		origin = transform.position;
+		StopCoroutine("ShakeCam");
 		StartCoroutine(ShakeCam());
 	}
 
@@ -70,7 +79,6 @@ public class CameraEffects : MonoBehaviour {
 
 	public void StartColourShow()
 	{
-		orig_col = Camera.main.backgroundColor;
 		StartCoroutine(ColourShow());
 	}
 
@@ -83,10 +91,10 @@ public class CameraEffects : MonoBehaviour {
 			float randy = Random.Range(-1f,1f);
 			float randz = Random.Range(-1f,1f);
 			Color col = new Color(randx, randy, randz) * colMag;
-			Camera.main.backgroundColor = col;
+			backgroundSprite.color = col;
 			count += Time.deltaTime * colChangeFreq;
 			yield return new WaitForSeconds(colChangeFreq * Time.deltaTime);
-			Camera.main.backgroundColor = orig_col;
+			backgroundSprite.color = orig_col;
 		}
 	}
 }
