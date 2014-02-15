@@ -40,9 +40,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nonDependents:
   - {fileID: 100000, guid: d69ee9d0e95692c4a85873fba2ddf82d, type: 2}
-  - {fileID: 100000, guid: 10725cd4ab9ac7c4aa2a41b9b79f6b19, type: 2}
   - {fileID: 100000, guid: 2653cca516b8c494eb1f550569136c1b, type: 2}
-  dependents: []
+  dependents:
+  - dependentGameObject: {fileID: 100000, guid: 10725cd4ab9ac7c4aa2a41b9b79f6b19,
+      type: 2}
+    dependencies:
+    - {fileID: 100000, guid: e1a8465b09ac7bb4883828b7e0bd28d0, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
