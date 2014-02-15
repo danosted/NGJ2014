@@ -28,7 +28,7 @@ public class EnemyManager : MonoBehaviour {
 		enemySpawnLimits = new Vector2(2, 5);
 		enemySpawnCount = 0;
 		enemySpawnIntervals = new List<int>();
-		enemySpawnIntervals.AddRange(new int[3] {3, 10, 100});
+		enemySpawnIntervals.AddRange(new int[3] {3, 10000, 100000});
 		enemySpawnTypes = 0;
 
 		Invoke("SpawnEnemyLoop", Random.Range (enemySpawnLimits.x, enemySpawnLimits.y));
@@ -42,6 +42,7 @@ public class EnemyManager : MonoBehaviour {
 			enemy = InstantiateEnemy(enemyType);
 			enemyPool.Add(enemy);
 		}
+		enemy.Init();
 		return enemy;
 	}
 
@@ -49,7 +50,6 @@ public class EnemyManager : MonoBehaviour {
 	{
 		Enemy enemy = ((GameObject)Instantiate(enemyPrefabs.Find(e => e.GetEnemyType() == enemyType).gameObject)).GetComponent<Enemy>();
 		enemy.SetEnemyManager(this);
-		enemy.Init();
 		return enemy;
 	}
 

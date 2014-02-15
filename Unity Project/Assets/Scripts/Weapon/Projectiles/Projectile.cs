@@ -3,13 +3,13 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour {
 
-	private float speed;
-	private float damage;
-	private float aoe;
-	private float maxDist;
-	private Vector3 direction;
-	private Transform target;
-	private bool hit;
+	protected float speed;
+	protected float damage;
+	protected float aoe;
+	protected float maxDist;
+	protected Vector3 direction;
+	protected Transform target;
+	protected bool hit;
 
 	public void Shoot(float speed, float damage, float aoe, float maxDist, Vector3 direction)
 	{
@@ -43,10 +43,19 @@ public class Projectile : MonoBehaviour {
 //
 //	}
 
-	void OnTriggerEnter2D(Collider2D collider)
+	void OnCollisionEnter2D(Collision2D collision)
 	{
-		hit = true;
-		KillProjectile();
+		if(collision.gameObject.GetComponent<Enemy>())
+		{
+			//TODO: Do damage
+			hit = true;
+			KillProjectile();
+		}
+	}
+
+	public Vector3 GetDirection()
+	{
+		return this.direction;
 	}
 
 	private void KillProjectile()
