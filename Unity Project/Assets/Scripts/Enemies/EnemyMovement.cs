@@ -16,7 +16,7 @@ public class EnemyMovement : MonoBehaviour {
 
 	private void Deactivate()
 	{
-		this.enabled = false;
+		this.gameObject.SetActive(false);
 	}
 
 	void Update () 

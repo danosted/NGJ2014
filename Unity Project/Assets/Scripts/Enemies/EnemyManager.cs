@@ -11,8 +11,6 @@ public class EnemyManager : MonoBehaviour {
 	[SerializeField]
 	private List<Enemy> enemyPrefabs;
 
-	private Transform[] enemyPath;
-
 	void Awake()
 	{
 		this.Init();
@@ -34,19 +32,6 @@ public class EnemyManager : MonoBehaviour {
 		{
 			enemyPool.Add(GetAvailableEnemy(EnemyType.Rabbit));
 		}
-	}
-
-	public Transform[] GetEnemyPath() 
-	{
-		if (enemyPath == null)
-		{
-			enemyPath = new Transform[enemyPathObject.transform.childCount];
-			for(int i = 0; i < enemyPath.Length; i++)
-			{
-				enemyPath[i] = enemyPathObject.transform.GetChild(i);
-			}
-		}
-		return enemyPath;
 	}
 
 	private Enemy GetAvailableEnemy(EnemyType enemyType)
