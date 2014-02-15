@@ -242,7 +242,9 @@ MonoBehaviour:
   health: 100
   zen: 0
   gunPosition: {fileID: 769158173}
-  weapon: {fileID: 11400000, guid: 8fdbe2ddb2f4d864a930e706ba234bc4, type: 2}
+  weapons:
+  - {fileID: 11400000, guid: 8fdbe2ddb2f4d864a930e706ba234bc4, type: 2}
+  - {fileID: 11400000, guid: 2423d78956b45c64eb16a15b92419096, type: 2}
 --- !u!114 &457887029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,7 +325,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f669e97d63da96a4896dc82ad7a00955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nonDependents: []
+  nonDependents:
+  - {fileID: 100000, guid: d69ee9d0e95692c4a85873fba2ddf82d, type: 2}
+  - {fileID: 100000, guid: 10725cd4ab9ac7c4aa2a41b9b79f6b19, type: 2}
   dependents: []
 --- !u!4 &700262408
 Transform:

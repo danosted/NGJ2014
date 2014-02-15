@@ -55,12 +55,10 @@ public class EnemyManager : MonoBehaviour {
 	private void SpawnEnemyLoop()
 	{
 		enemySpawnLimits *= 0.95f;
-		Debug.Log ("EnemySpawnCount: " + enemySpawnCount);
 		GetAvailableEnemy((EnemyType)Random.Range(0, enemySpawnTypes + 1)).Init();
 		if (++enemySpawnCount >= enemySpawnIntervals[enemySpawnTypes])
 		{
 			enemySpawnTypes++;
-			Debug.Log ("EnemySpawnTypes updated");
 		}
 		
 		Invoke("SpawnEnemyLoop", Random.Range (enemySpawnLimits.x, enemySpawnLimits.y));
