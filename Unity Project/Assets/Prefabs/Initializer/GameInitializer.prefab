@@ -39,7 +39,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nonDependents:
-  - {fileID: 100000, guid: 9a29dde8f1066604e8284c8af83884fd, type: 2}
+  - {fileID: 100000, guid: d69ee9d0e95692c4a85873fba2ddf82d, type: 2}
+  - {fileID: 100000, guid: 10725cd4ab9ac7c4aa2a41b9b79f6b19, type: 2}
   dependents: []
 --- !u!1001 &100100000
 Prefab:
