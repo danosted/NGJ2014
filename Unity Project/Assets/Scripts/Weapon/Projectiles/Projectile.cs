@@ -59,6 +59,22 @@ public class Projectile : MonoBehaviour {
 		}
 	}
 
+	void OnColliderEnter2D(Collider2D Collider)
+	{
+		if(Collider.GetComponent<Enemy>())
+		{
+			hit = true;
+			if(aoe > 0f)
+			{
+				float tmpAoe = aoe;
+				this.aoe = 0f;
+				GameObject splash = Instantiate(this.gameObject, transform.position, Quaternion.identity) as GameObject;
+				splash.GetComponent<CircleCollider2D>().radius = tmpAoe * 2f;
+			}
+			KillProjectile();
+		}
+	}
+
 	public Vector3 GetDirection()
 	{
 		return this.direction;

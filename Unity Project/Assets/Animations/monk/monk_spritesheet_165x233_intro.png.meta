@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0796da58905a9e94290331eb975ff614
+guid: d5e4585a21d05aa44b8e3b620736f474
 TextureImporter:
   serializedVersion: 2
   mipmaps:
@@ -21,21 +21,21 @@ TextureImporter:
   generateCubemap: 0
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 1024
+  maxTextureSize: 512
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 102
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings:
@@ -44,6 +44,60 @@ TextureImporter:
     textureFormat: -2
     compressionQuality: 50
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: monk_spritesheet_165x233_intro_0
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 349
+        width: 135
+        height: 327
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: monk_spritesheet_165x233_intro_1
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 349
+        width: 146
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: monk_spritesheet_165x233_intro_2
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 349
+        width: 135
+        height: 327
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: monk_spritesheet_165x233_intro_3
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 349
+        width: 158
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: monk_spritesheet_165x233_intro_4
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 0
+        width: 135
+        height: 327
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: monk_spritesheet_165x233_intro_5
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 0
+        width: 180
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
   spritePackingTag: 
   userData: 
