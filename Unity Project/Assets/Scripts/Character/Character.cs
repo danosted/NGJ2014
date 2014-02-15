@@ -18,7 +18,7 @@ public class Character : MonoBehaviour {
 	{
 		GetComponent<InputHandler>().OnPress += OnPressed;
 		GetComponent<InputHandler>().OnRelease += OnReleased;
-		GameObject weaponGO = Instantiate(weapon.gameObject, gunPosition.position, Quaternion.identity) as GameObject;
+		GameObject weaponGO = Instantiate(weapon.gameObject, gunPosition.position, weapon.transform.rotation) as GameObject;
 		weaponGO.transform.parent = transform;
 		weapon = weaponGO.GetComponent<Weapon>();
 	}

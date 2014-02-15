@@ -38,8 +38,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f669e97d63da96a4896dc82ad7a00955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nonDependents:
-  - {fileID: 100000, guid: 9a29dde8f1066604e8284c8af83884fd, type: 2}
+  nonDependents: []
   dependents: []
 --- !u!1001 &100100000
 Prefab:
