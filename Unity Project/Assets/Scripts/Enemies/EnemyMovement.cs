@@ -23,15 +23,7 @@ public class EnemyMovement : MonoBehaviour {
 		this.GetComponent<Rigidbody2D>().Sleep();
 	}
 
-	void OnTriggerEnter2D(Collider2D collider)
-	{
-		if (collider.tag == "Hill")
-		{
-			// Start movement along path again.
-		}
-	}
-
-	private void Deactivate()
+	public void Deactivate()
 	{
 		this.enabled = false;
 	}
@@ -44,7 +36,6 @@ public class EnemyMovement : MonoBehaviour {
 		}
 		else if(!enemyReference.GetIsSpecialAnimating())
 		{
-			// Don't move if flying from knockback.
 			iTween.PutOnPath(gameObject, enemyPath, pathProgress);
 			pathProgress += MovementSpeed * 0.01f * Time.deltaTime;
 		}
@@ -53,17 +44,13 @@ public class EnemyMovement : MonoBehaviour {
 	public void GotShot(Projectile projectile)
 	{
 		bool isDead = enemyReference.GetHealth() <= 0;
-		int factor = isDead ? 10 : 3;
-//		rigidbody2D.AddForce(new Vector2(projectile.GetDirection().x, projectile.GetDirection().y) * factor);
-//		rigidbody2D.AddForce(new Vector2(projectile.GetDirection().y, -projectile.GetDirection().x * factor) * 10);
-		// Disable movement along path.
 		if (isDead)
 		{
 			collider2D.isTrigger = false;
+			rigidbody2D.AddForce(new Vector2(projectile.GetDirection().y, -projectile.GetDirection().x * 10 * ((-projectile.GetDirection().x < 0) ? -1 : 1)));
 			this.Deactivate();
 		}
 	}
-
 	private Transform[] GetEnemyPath(GameObject enemyPathObject)
 	{
 		int enemyPathSize = 1;

@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour {
 		combo = 0;
 		frameKillCount = 0;
 		lastKillTime = 0;
-		StartCoroutine(test ());
 	}
 
 	void Update()
@@ -48,12 +47,6 @@ public class GameManager : MonoBehaviour {
 		frameKillCount = 0;
 
 		score += combo * Time.deltaTime;
-	}
-
-	private IEnumerator test()
-	{
-		yield return new WaitForSeconds(10f);
-		GoToNextState();
 	}
 
 	public void GoToNextState()
