@@ -11,6 +11,9 @@ public class Ambience : MonoBehaviour {
 
 	private AudioSource audio;
 	private float startTime = 0f;
+	private bool isChanging;
+	private int state;
+	private float stateChangeTime;
 
 	void Start () 
 	{
@@ -23,29 +26,56 @@ public class Ambience : MonoBehaviour {
 
 	private void OnStateChange(int state, float stateChangeTime)
 	{
-		if(themes.Length > state)
+		this.stateChangeTime = stateChangeTime;
+		if(this.state < state)
 		{
-			StartCoroutine(OldAudioToBridge(state));
+			this.state = state;
+		}
+		if(isChanging)
+		{
+			StartCoroutine(ChangingAfter());
+		} 
+		else if(themes.Length > state)
+		{
+			StartCoroutine(OldAudioToBridge());
 		}
 	}
 
-	private IEnumerator OldAudioToBridge(int state)
+	private IEnumerator ChangingAfter()
+	{
+		while(isChanging)
+		{
+			yield return null;
+		}
+		OnStateChange(state, stateChangeTime);
+	}
+
+	private IEnumerator OldAudioToBridge()
 	{
 		audio.loop = false;
 		startTime = Mathf.Abs(startTime - Time.time);
-		yield return new WaitForSeconds(Mathf.Abs(audio.clip.length - startTime));
+		isChanging = true;
+		while(audio.isPlaying)
+		{
+			yield return null;
+		}
 		audio.clip = bridges[state-1];
+		audio.loop = true;
 		audio.Play();
 		Debug.Log("playin " + bridges[state-1].name);
-		StartCoroutine(BridgeToAudio(state));
+		StartCoroutine(BridgeToAudio());
 	}
 
-	private IEnumerator BridgeToAudio(int state)
+	private IEnumerator BridgeToAudio()
 	{
-		yield return new WaitForSeconds(audio.clip.length);
+		while(audio.isPlaying)
+		{
+			yield return null;
+		}
 		audio.clip = themes[state];
 		audio.loop = true;
 		audio.Play();
+		isChanging = false;
 		Debug.Log("playin " + themes[state].name);
 	}
 }

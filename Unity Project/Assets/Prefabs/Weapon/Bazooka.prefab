@@ -120,7 +120,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .0500000007
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -188,7 +188,8 @@ MonoBehaviour:
   projectile: {fileID: 11400000, guid: 7bc3de321be0a0945a3cd9df838aa1d7, type: 2}
   pivot: {fileID: 400006}
   gunModel: {fileID: 400002}
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: 4a1acda7b766a5149b0a2a6b8bdcea9c, type: 3}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -94,13 +94,13 @@ public class Character : MonoBehaviour {
 			{
 				weapon.transform.rotation = Quaternion.AngleAxis(angle * 180f/Mathf.PI, Vector3.forward);
 			}
+			this.weapon.StartFiring();
 			yield return null;
 		}
 	}
 
 	private void OnPressed()
 	{
-		this.weapon.StartFiring();
 		isFiring = true;
 		StartCoroutine(PointGun());
 	}
