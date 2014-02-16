@@ -66,8 +66,11 @@ public class Enemy : MonoBehaviour {
 		}
 		if(GetComponent<AudioSource>())
 		{
-			GetComponent<AudioSource>().clip = hitClip;
-			GetComponent<AudioSource>().Play();
+			if(!GetComponent<AudioSource>().isPlaying)
+			{
+				GetComponent<AudioSource>().clip = hitClip;
+				GetComponent<AudioSource>().Play();
+			}
 		}
 		this.health--;
 		GetComponentInChildren<HealthbarScript>().DamageTaken(1);

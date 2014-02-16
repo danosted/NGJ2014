@@ -272,7 +272,7 @@ MonoBehaviour:
   type: 1
   health: 3
   hitClip: {fileID: 0}
-  specialHitClip: {fileID: 8300000, guid: bf9ff51022efd5a4090deca4d4472a04, type: 3}
+  specialHitClip: {fileID: 8300000, guid: 601ed79dac4d80d40b58f29de65f91e8, type: 3}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
