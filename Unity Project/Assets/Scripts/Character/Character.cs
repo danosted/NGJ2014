@@ -84,7 +84,7 @@ public class Character : MonoBehaviour {
 		while(isFiring)
 		{
 			Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			mousepos.Normalize();
+			(mousepos - gunPosition.position).Normalize();
 			float angle = Mathf.Atan(mousepos.y/mousepos.x);
 			if(facingLeft)
 			{
