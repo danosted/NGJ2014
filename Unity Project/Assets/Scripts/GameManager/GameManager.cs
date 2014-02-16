@@ -42,9 +42,13 @@ public class GameManager : MonoBehaviour {
 		{
 			Instance.combo = 0;
 		}
-		if (Instance.combo >= 20 && Instance.currentState == 2)
+		if (Instance.combo >= 30 && Instance.currentState == 2)
 		{	
 			GoToNextState();
+		}
+		else if (Instance.combo >= 100 && Instance.currentState == 3)
+		{	
+			GameOver();
 		}
 		Instance.frameKillCount = 0;
 

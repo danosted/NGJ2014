@@ -18,6 +18,7 @@ public class EnemyManager : MonoBehaviour {
 	private Dictionary<EnemyType, Transform[]> enemyPathsRight;
 
 	[SerializeField]
+	private int rabbitSpecialBound;
 	private int rabbitSpecialNumber;
 	private int rabbitSpawnCount;
 	
@@ -33,6 +34,7 @@ public class EnemyManager : MonoBehaviour {
 		enemySpawnMax = 1;
 
 		rabbitSpawnCount = 0;
+		rabbitSpecialNumber = Random.Range (0, rabbitSpecialBound);
 		
 		enemyPathsLeft = new Dictionary<EnemyType, Transform[]>();
 		enemyPathsRight = new Dictionary<EnemyType, Transform[]>();

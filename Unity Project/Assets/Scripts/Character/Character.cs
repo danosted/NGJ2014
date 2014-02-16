@@ -115,15 +115,18 @@ public class Character : MonoBehaviour {
 	{
 		if(collider.GetComponent<Enemy>())
 		{
-			if(health-1 > 0)
+			float damageTaken = (gameManInstance.GetCurrentState() == 3) ? 1/3f : 1f;
+			if(health > damageTaken)
 			{
-				health--;
-			} else
+				health -= damageTaken;
+			} 
+			else
 			{
+				healthBar.DamageTaken(int.MaxValue);
 				gameManInstance.GameOver();
 				return;
 			}
-			healthBar.DamageTaken(1f);
+			healthBar.DamageTaken(damageTaken);
 			if (!(collider.GetComponent<Enemy>().GetIsSpecial()))
 				collider.enabled = false;
 		}
