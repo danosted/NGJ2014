@@ -10,11 +10,13 @@ public class Enemy : MonoBehaviour {
 	private int health;
 	private bool isSpecial;
 	private bool isSpecialAnimating;
+	private bool hasSpecialAnimated;
 	
 	public void Init()
 	{
 		this.enabled = true;
 		this.isSpecialAnimating = false;
+		this.hasSpecialAnimated = false;
 		this.gameObject.SetActive(true);
 		GetComponent<EnemyMovement>().Init(this);
 		GameManager.Instance.OnStateChanged += this.OnStateChanged;
@@ -24,13 +26,18 @@ public class Enemy : MonoBehaviour {
 	{
 		if (transform.position.magnitude > 30)
 		{
-			this.DeactivateObject();
+			this.DestroySelf();
 		}
 	}
 
 	public void DeactivateObject()
 	{
 		this.gameObject.SetActive(false);
+		GameManager.Instance.OnStateChanged -= this.OnStateChanged;
+	}
+	private void DestroySelf()
+	{
+		DestroyObject(this.gameObject);
 		GameManager.Instance.OnStateChanged -= this.OnStateChanged;
 	}
 
@@ -45,19 +52,15 @@ public class Enemy : MonoBehaviour {
 
 	private void GotShot(Projectile projectile)
 	{
-//		iTween.PunchScale(gameObject, Vector3.one * 0.5f, 0.5f);
-//		iTween.PunchRotation(gameObject, new Vector3(0.5f, 0.5f, 0), 0.5f);
-		if(!isSpecial || transform.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Rabbit_Monster_Move"))
-		{
-			this.health--;
-			GetComponentInChildren<HealthbarScript>().DamageTaken(1);
-			GetComponent<EnemyMovement>().GotShot(projectile);
-		}
-		else if (!isSpecialAnimating)
+		if (isSpecial && !isSpecialAnimating && !hasSpecialAnimated)
 		{	
 			this.isSpecialAnimating = true;
 			StartCoroutine("WaitForSpecialAnimation");
 		}
+		this.health--;
+		GetComponentInChildren<HealthbarScript>().DamageTaken(1);
+		GetComponent<EnemyMovement>().GotShot(projectile);
+
 	}
 
 	private IEnumerator WaitForSpecialAnimation()
@@ -68,6 +71,8 @@ public class Enemy : MonoBehaviour {
 		yield return new WaitForSeconds(0.5f);
 		transform.GetComponentInChildren<Animator>().SetBool("SpecialAnimating", false);
 		rigidbody2D.WakeUp ();
+		this.isSpecialAnimating = false;
+		this.hasSpecialAnimated = true;
 	}
 
 	private void OnStateChanged(int currentState, float changeTime)
@@ -102,6 +107,10 @@ public class Enemy : MonoBehaviour {
 	public bool GetIsSpecialAnimating()
 	{
 		return this.isSpecialAnimating;
+	}
+	public bool GetIsSpecial()
+	{
+		return this.isSpecial;
 	}
 
 	public void SetIsSpecial(bool isSpecial)

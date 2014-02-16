@@ -27,7 +27,6 @@ public class EnemyManager : MonoBehaviour {
 	
 	void Init () 
 	{
-		enemyPool = new List<Enemy>();
 		enemySpawnLimits = new Vector2(1, 3);
 		enemySpawnMin = 0;
 		enemySpawnMax = 1;
@@ -46,12 +45,7 @@ public class EnemyManager : MonoBehaviour {
 	
 	private Enemy GetAvailableEnemy(EnemyType enemyType)
 	{
-		Enemy enemy = enemyPool.Find(e => e.GetEnemyType() == enemyType && !e.gameObject.activeSelf);
-		if (!enemy)
-		{
-			enemy = InstantiateEnemy(enemyType);
-			enemyPool.Add(enemy);
-		}
+		Enemy enemy = InstantiateEnemy(enemyType);
 		return enemy;
 	}
 	
