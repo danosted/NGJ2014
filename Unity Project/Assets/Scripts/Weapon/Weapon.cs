@@ -81,6 +81,10 @@ public class Weapon : MonoBehaviour {
 		{
 			audio.Play();
 		}
+		if(clips.Length == 1)
+		{
+			audio.Play();
+		}
 		else if(!audio.isPlaying)
 		{
 			int randIndex = Random.Range(0, clips.Length-1);

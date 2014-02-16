@@ -7,7 +7,7 @@ public class GameInitializerScript : MonoBehaviour {
 	[SerializeField]
 	private GameObject startAnim;
 	[SerializeField]
-	private TextMesh startText;
+	private GameObject startText;
 	private bool isPlaying = true;
 
 	[SerializeField]
@@ -31,11 +31,11 @@ public class GameInitializerScript : MonoBehaviour {
 	{
 		while(isPlaying)
 		{
-			if(Input.GetMouseButton(0))
+			if(Input.GetMouseButtonDown(0))
 			{
 				isPlaying = false;
 				Destroy(startAnim);
-				Destroy(startText.gameObject);
+				Destroy(startText);
 			}
 			yield return null;
 		}
