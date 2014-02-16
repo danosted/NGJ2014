@@ -118,9 +118,9 @@ AudioSource:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: .100000001
+  m_audioClip: {fileID: 8300000, guid: 77bf991c90ee142449ce4754fa6626d8, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: .0299999993
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   pivot: {fileID: 400006}
   gunModel: {fileID: 400002}
   clips:
-  - {fileID: 8300000, guid: beceeec0b556f704da2ccde320d4fcba, type: 3}
+  - {fileID: 8300000, guid: a7ea688c7252c4cef8048595863217fc, type: 3}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

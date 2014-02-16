@@ -53,8 +53,7 @@ public class Weapon : MonoBehaviour {
 	{
 		while(isFiring && !isCooling)
 		{
-			if(!audio.isPlaying)
-				PlayRandomSound();
+			PlayRandomSound();
 			GameObject pGO = Instantiate(projectile.gameObject, barrel.position, projectile.transform.rotation) as GameObject;
 			Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			Vector3 dir = barrel.position - pivot.position;
@@ -78,7 +77,11 @@ public class Weapon : MonoBehaviour {
 		{
 			return;
 		}
-		if(!audio.isPlaying)
+		if(clips[0].name == "GunShot")
+		{
+			audio.Play();
+		}
+		else if(!audio.isPlaying)
 		{
 			int randIndex = Random.Range(0, clips.Length-1);
 			timeStart = Time.time;
