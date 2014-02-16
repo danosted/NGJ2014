@@ -74,6 +74,10 @@ public class Weapon : MonoBehaviour {
 
 	private void PlayRandomSound()
 	{
+		if(clips.Length > 0)
+		{
+			return;
+		}
 		if(!audio.isPlaying)
 		{
 			int randIndex = Random.Range(0, clips.Length-1);
