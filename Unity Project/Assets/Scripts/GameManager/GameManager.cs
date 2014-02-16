@@ -69,14 +69,12 @@ public class GameManager : MonoBehaviour {
 
 	public void GameOver()
 	{
+		while(currentState < 4)
+		{
+			GoToNextState();
+		}
 		whiteScreen.collider2D.enabled = true;
-		StartCoroutine(RestartGame());
-	}
-
-	private IEnumerator RestartGame()
-	{
-		yield return StartCoroutine(FadeoutReset());
-		Application.LoadLevel(Application.loadedLevelName);
+		StartCoroutine(FadeoutReset());
 	}
 
 	public int GetCurrentState()
@@ -86,12 +84,11 @@ public class GameManager : MonoBehaviour {
 
 	private IEnumerator FadeoutReset()
 	{
-		while(whiteScreen.color.a < 0.9f && !Input.GetMouseButtonDown(0))
+		while(!Input.GetMouseButtonDown(0))
 		{
 			whiteScreen.color = Color.Lerp(whiteScreen.color, Color.white, Time.deltaTime);
 			yield return null;
 		}
-
+		Application.LoadLevel(0);
 	}
-
 }
