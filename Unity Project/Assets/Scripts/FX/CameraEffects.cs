@@ -35,8 +35,6 @@ public class CameraEffects : MonoBehaviour {
 
 	private void OnStateChange(int state, float stateChangeTime)
 	{
-		shakeTime = stateChangeTime;
-		colorChangeTime = stateChangeTime;
 		StartCameraShake();
 		StartColourShow();
 	}

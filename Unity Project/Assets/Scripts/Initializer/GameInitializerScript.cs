@@ -46,6 +46,7 @@ public class GameInitializerScript : MonoBehaviour {
 	{
 		InstantiateNonDependents();
 		InstantiateDependents();
+		Destroy(gameObject);
 	}
 
 	private void InstantiateNonDependents()
