@@ -11,10 +11,6 @@ public class Enemy : MonoBehaviour {
 	private bool isSpecial;
 	private bool isSpecialAnimating;
 	private bool hasSpecialAnimated;
-	[SerializeField]
-	private AudioClip hitClip;
-	[SerializeField]
-	private AudioClip specialHitClip;
 	
 	public void Init()
 	{
@@ -59,21 +55,10 @@ public class Enemy : MonoBehaviour {
 		if (isSpecial && !isSpecialAnimating && !hasSpecialAnimated)
 		{	
 			this.isSpecialAnimating = true;
-			GetComponent<AudioSource>().clip = specialHitClip;
-			GetComponent<AudioSource>().volume = 1f;
-			GetComponent<AudioSource>().Play();
 			StartCoroutine("WaitForSpecialAnimation");
 		}
-		if(GetComponent<AudioSource>())
-		{
-			if(!GetComponent<AudioSource>().isPlaying)
-			{
-				GetComponent<AudioSource>().clip = hitClip;
-				GetComponent<AudioSource>().Play();
-			}
-		}
-		this.health--;
-		GetComponentInChildren<HealthbarScript>().DamageTaken(1);
+		this.health -= Mathf.RoundToInt(projectile.GetDamage());
+		GetComponentInChildren<HealthbarScript>().DamageTaken(projectile.GetDamage());
 		GetComponent<EnemyMovement>().GotShot(projectile);
 
 	}

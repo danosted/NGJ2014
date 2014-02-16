@@ -76,6 +76,11 @@ public class Projectile : MonoBehaviour {
 		return this.direction;
 	}
 
+	public float GetDamage()
+	{
+		return this.damage;
+	}
+
 	protected void KillProjectile()
 	{
 		StopCoroutine("Shooting");
