@@ -44,7 +44,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9368b70dc58915c49a4c63175177e2f9, type: 2}
   - {fileID: 11400002, guid: 376705642d295c143b488ae3ec8e868f, type: 2}
   enemySpawnLimits: {x: 2, y: 3}
-  rabbitSpecialNumber: 3
+  rabbitSpecialBound: 5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
