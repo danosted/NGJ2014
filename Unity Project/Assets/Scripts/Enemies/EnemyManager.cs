@@ -108,11 +108,16 @@ public class EnemyManager : MonoBehaviour {
 		return enemyPath;
 	}
 
-	private void OnStateChanged(int currentState, float changeTime)
+	private void OnStateChanged(int currentState, float stateChangeTime)
 	{
 		if (currentState + 1 < enemyPrefabs.Count)
 		{
-			enemySpawnMax++;
+			StartCoroutine("UpdateState", stateChangeTime);
 		}
+	}
+	private IEnumerator UpdateState(float stateChangetime)
+	{
+		yield return new WaitForSeconds(stateChangetime);
+		enemySpawnMax++;
 	}
 }

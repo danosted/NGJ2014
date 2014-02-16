@@ -72,8 +72,8 @@ public class EnemyMovement : MonoBehaviour {
 
 	public void GotShot(Projectile projectile)
 	{
-		iTween.PunchScale(gameObject, Vector3.one * punchAmount, 0.5f);
-		iTween.PunchRotation(gameObject, Vector3.one * punchAmount, 0.5f);
+		iTween.PunchScale(transform.FindChild("Animator").gameObject, Vector3.one * punchAmount, 0.5f);
+		iTween.PunchRotation(transform.FindChild("Animator").gameObject, Vector3.one * punchAmount, 0.5f);
 		bool isDead = enemyReference.GetHealth() <= 0;
 		if (isDead)
 		{

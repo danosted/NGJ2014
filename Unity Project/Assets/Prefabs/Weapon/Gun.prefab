@@ -96,7 +96,7 @@ MonoBehaviour:
   firingDelay: .5
   firingRange: 12
   projectileSpeed: 1
-  projectileDamage: 1
+  projectileDamage: 2
   projectileAoe: 0
   barrel: {fileID: 400004}
   projectile: {fileID: 11400000, guid: 7bc3de321be0a0945a3cd9df838aa1d7, type: 2}

@@ -39,8 +39,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startAnim: {fileID: 0}
+  startText: {fileID: 0}
   nonDependents:
   - {fileID: 100000, guid: ef3d4ac0107715d4ea1c74dd6de43dc8, type: 2}
+  - {fileID: 100000, guid: 982e945420aa04340a4b9fc2c5a5b4ae, type: 2}
   dependents:
   - dependentGameObject: {fileID: 100000, guid: 10725cd4ab9ac7c4aa2a41b9b79f6b19,
       type: 2}

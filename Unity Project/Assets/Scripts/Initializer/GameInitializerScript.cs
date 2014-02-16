@@ -54,6 +54,10 @@ public class GameInitializerScript : MonoBehaviour {
 		{
 			GameObject GO = nonDependents[i];
 			GO = Instantiate(GO, GO.transform.position, GO.transform.rotation) as GameObject;
+			if (GO.GetComponent<CthulhuScript>())
+			{
+				GO.GetComponent<CthulhuScript>().Init();
+			}
 			if(GO.GetComponent<GameInitializer2Object>())
 			{
 				GO.GetComponent<GameInitializer2Object>().Initialize();

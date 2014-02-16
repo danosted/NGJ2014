@@ -40,12 +40,10 @@ public class GameManager : MonoBehaviour {
 		}
 		else if(Instance.lastKillTime + Instance.comboKillInterval < Time.time)
 		{
-			Debug.Log ("State:" + Instance.currentState);
 			Instance.combo = 0;
 		}
-		if (Instance.combo >= 10 && Instance.currentState == 2)
+		if (Instance.combo >= 20 && Instance.currentState == 2)
 		{	
-			Debug.Log ("State 3 initiated!");
 			GoToNextState();
 		}
 		Instance.frameKillCount = 0;
