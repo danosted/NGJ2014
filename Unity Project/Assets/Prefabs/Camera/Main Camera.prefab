@@ -135,17 +135,17 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fea65a12ada30b1418324b1d1d9a2b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeTime: 5
+  shakeTime: 2
   shakeFreq: 1
   magX: 1
   magY: 1
   magZ: 1
-  colorChangeTime: 5
+  colorChangeTime: 2
   colMag: 1
   colChangeFreq: 1
   backgroundSprite: {fileID: 21200000}

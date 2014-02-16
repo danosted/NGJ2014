@@ -21,9 +21,18 @@ public class Weapon : MonoBehaviour {
 	private Transform pivot;
 	[SerializeField]
 	private Transform gunModel;
+	[SerializeField]
+	private AudioClip[] clips;
+	private AudioSource audio;
+	private float timeStart;
 
 	private bool isFiring;
 	private bool isCooling;
+
+	void Start()
+	{
+		audio = GetComponent<AudioSource>();
+	}
 
 	public void StartFiring()
 	{
@@ -34,15 +43,21 @@ public class Weapon : MonoBehaviour {
 	public void StopFiring()
 	{
 		isFiring = false;
+		if(audio.isPlaying && audio.clip.length > 10f)
+		{
+			audio.Stop();
+		}
 	}
 
 	private IEnumerator StartFiringWeapon()
 	{
 		while(isFiring && !isCooling)
 		{
+			if(!audio.isPlaying)
+				PlayRandomSound();
 			GameObject pGO = Instantiate(projectile.gameObject, barrel.position, projectile.transform.rotation) as GameObject;
 			Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			Vector3 dir = new Vector3(mousepos.x, mousepos.y, 0f) - barrel.position;
+			Vector3 dir = barrel.position - pivot.position;
 			dir.Normalize();
 			dir *= firingRange;
 			pGO.GetComponent<Projectile>().Shoot(projectileSpeed, projectileDamage, projectileAoe, firingRange, dir);
@@ -55,5 +70,29 @@ public class Weapon : MonoBehaviour {
 		isCooling = true;
 		yield return new WaitForSeconds(firingDelay);
 		isCooling = false;
+	}
+
+	private void PlayRandomSound()
+	{
+		if(!audio.isPlaying)
+		{
+			int randIndex = Random.Range(0, clips.Length-1);
+			timeStart = Time.time;
+			audio.clip = clips[randIndex];
+			audio.Play();
+		}
+		else
+		{
+			StartCoroutine(PlaySoundAfter());
+		}
+	}
+
+	private IEnumerator PlaySoundAfter()
+	{
+		int randIndex = Random.Range(0, clips.Length-1);
+		float timeSinceStart = Time.time - timeStart;
+		yield return new WaitForSeconds(audio.clip.length - timeSinceStart);
+		audio.clip = clips[randIndex];
+		audio.Play();
 	}
 }
