@@ -34,7 +34,7 @@ public class EnemyManager : MonoBehaviour {
 		enemySpawnMax = 1;
 
 		rabbitSpawnCount = 0;
-		rabbitSpecialNumber = Random.Range (0, rabbitSpecialBound);
+		rabbitSpecialNumber = Random.Range (2, rabbitSpecialBound);
 		
 		enemyPathsLeft = new Dictionary<EnemyType, Transform[]>();
 		enemyPathsRight = new Dictionary<EnemyType, Transform[]>();
@@ -64,12 +64,13 @@ public class EnemyManager : MonoBehaviour {
 		Enemy enemy = GetAvailableEnemy((EnemyType)Random.Range(enemySpawnMin, enemySpawnMax + 1));
 		enemy.Init();
 		enemy.SetEnemyManager(this);
-		if (enemy.GetEnemyType() == EnemyType.Rabbit && (rabbitSpawnCount < rabbitSpecialNumber))
+		if (enemy.GetEnemyType() == EnemyType.Rabbit && GameManager.Instance.GetCurrentState() == 0)
 		{
 			rabbitSpawnCount++;
-			if (rabbitSpawnCount >= rabbitSpecialNumber)
+			if (rabbitSpawnCount % rabbitSpecialNumber == 0)
 			{
 				enemy.SetIsSpecial(true);
+
 			}
 		}
 

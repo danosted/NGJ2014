@@ -108,6 +108,10 @@ public class Enemy : MonoBehaviour {
 	{
 		return this.isSpecialAnimating;
 	}
+	public bool GetHasSpecialAnimated()
+	{
+		return this.hasSpecialAnimated;
+	}
 	public bool GetIsSpecial()
 	{
 		return this.isSpecial;

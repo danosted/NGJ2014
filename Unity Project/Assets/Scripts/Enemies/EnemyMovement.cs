@@ -35,13 +35,7 @@ public class EnemyMovement : MonoBehaviour {
 
 	void Update () 
 	{
-		if (pathProgress >= 1)
-		{
-			if (enemyReference.GetIsSpecial())
-				GameManager.Instance.GoToNextState();
-			this.Deactivate();
-		}
-		else if(!enemyReference.GetIsSpecialAnimating())
+		if(!enemyReference.GetIsSpecialAnimating())
 		{
 			if (enemyPath == null)
 			{   
@@ -64,6 +58,10 @@ public class EnemyMovement : MonoBehaviour {
 			{
 				if (++enemyPathIndex == enemyPath.Length)
 				{
+					if (enemyReference.GetIsSpecial() && enemyReference.GetHasSpecialAnimated() && GameManager.Instance.GetCurrentState() == 1)
+					{
+						GameManager.Instance.GoToNextState();
+					}
 					this.Deactivate();
 				}
 			}
@@ -79,7 +77,7 @@ public class EnemyMovement : MonoBehaviour {
 		{
 			collider2D.isTrigger = false;
 			rigidbody2D.AddForce(new Vector2(projectile.GetDirection().y, -projectile.GetDirection().x * ((-projectile.GetDirection().x < 0) ? -1 : 1)) * 80);
-			if (enemyReference.GetIsSpecial())
+			if (enemyReference.GetIsSpecial() && GameManager.Instance.GetCurrentState() == 0)
 				GameManager.Instance.GoToNextState();
 			GameManager.Instance.IncrementFrameKillCount();
 			if (GameManager.Instance.GetCurrentState() >= 3)
