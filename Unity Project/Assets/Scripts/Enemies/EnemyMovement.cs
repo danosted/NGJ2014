@@ -36,6 +36,8 @@ public class EnemyMovement : MonoBehaviour {
 	{
 		if (pathProgress >= 1)
 		{
+			if (enemyReference.GetIsSpecial())
+				GameManager.Instance.GoToNextState();
 			this.Deactivate();
 		}
 		else if(!enemyReference.GetIsSpecialAnimating())
@@ -74,6 +76,9 @@ public class EnemyMovement : MonoBehaviour {
 		{
 			collider2D.isTrigger = false;
 			rigidbody2D.AddForce(new Vector2(projectile.GetDirection().y, -projectile.GetDirection().x * ((-projectile.GetDirection().x < 0) ? -1 : 1)) * 80);
+			if (enemyReference.GetIsSpecial())
+				GameManager.Instance.GoToNextState();
+			GameManager.Instance.IncrementFrameKillCount();
 			this.Deactivate();
 		}
 	}
