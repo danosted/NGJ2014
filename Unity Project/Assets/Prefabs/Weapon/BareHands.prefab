@@ -190,9 +190,9 @@ MonoBehaviour:
   pivot: {fileID: 400006}
   gunModel: {fileID: 0}
   clips:
-  - {fileID: 8300000, guid: 5a86349299558044fbb69dd8c543e3ef, type: 3}
-  - {fileID: 8300000, guid: 67a8ee0bc80635f42b21b7a8b3b8edf6, type: 3}
-  - {fileID: 8300000, guid: a0138009112153b43a06966f66ee2857, type: 3}
+  - {fileID: 8300000, guid: ace54ef40dcfe4713bc800d53d5fc077, type: 3}
+  - {fileID: 8300000, guid: 358836ad250f348a3808a984e1354e1e, type: 3}
+  - {fileID: 8300000, guid: 156ec79ce67824ec2998efe879903e59, type: 3}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

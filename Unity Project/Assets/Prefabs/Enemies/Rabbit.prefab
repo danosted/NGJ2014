@@ -271,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   health: 3
-  hitClip: {fileID: 8300000, guid: 5712321ce3d8edc4e94c2065abbdcdbe, type: 3}
+  hitClip: {fileID: 0}
   specialHitClip: {fileID: 8300000, guid: bf9ff51022efd5a4090deca4d4472a04, type: 3}
 --- !u!114 &11400002
 MonoBehaviour:

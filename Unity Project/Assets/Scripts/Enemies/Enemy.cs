@@ -60,6 +60,7 @@ public class Enemy : MonoBehaviour {
 		{	
 			this.isSpecialAnimating = true;
 			GetComponent<AudioSource>().clip = specialHitClip;
+			GetComponent<AudioSource>().volume = 1f;
 			GetComponent<AudioSource>().Play();
 			StartCoroutine("WaitForSpecialAnimation");
 		}
