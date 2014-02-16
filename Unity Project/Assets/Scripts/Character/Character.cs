@@ -124,6 +124,8 @@ public class Character : MonoBehaviour {
 				return;
 			}
 			healthBar.DamageTaken(1f);
+			if (!(collider.GetComponent<Enemy>().GetIsSpecial()))
+				collider.enabled = false;
 		}
 	}
 

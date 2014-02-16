@@ -33,22 +33,24 @@ public class GameManager : MonoBehaviour {
 
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Instance.frameKillCount != 0)
 		{
-			this.IncrementFrameKillCount();
+			Instance.combo += Instance.frameKillCount;
+			Instance.lastKillTime = Time.time;
 		}
-		if (frameKillCount != 0)
+		else if(Instance.lastKillTime + Instance.comboKillInterval < Time.time)
 		{
-			combo += frameKillCount;
-			lastKillTime = Time.time;
+			Debug.Log ("State:" + Instance.currentState);
+			Instance.combo = 0;
 		}
-		else if(lastKillTime + comboKillInterval < Time.time)
-		{
-			combo = 0;
+		if (Instance.combo >= 10 && Instance.currentState == 2)
+		{	
+			Debug.Log ("State 3 initiated!");
+			GoToNextState();
 		}
-		frameKillCount = 0;
+		Instance.frameKillCount = 0;
 
-		score += combo * Time.deltaTime;
+		Instance.score += Instance.combo * Time.deltaTime;
 	}
 
 	public void GoToNextState()
@@ -73,6 +75,11 @@ public class GameManager : MonoBehaviour {
 	{
 		yield return StartCoroutine(FadeoutReset());
 		Application.LoadLevel(Application.loadedLevelName);
+	}
+
+	public int GetCurrentState()
+	{
+		return currentState;
 	}
 
 	private IEnumerator FadeoutReset()

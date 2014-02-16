@@ -54,7 +54,7 @@ public class Projectile : MonoBehaviour {
 		}
 	}
 
-	void OnColliderEnter2D(Collider2D collider)
+	void OnTriggerEnter2D(Collider2D collider)
 	{
 		if(collider.GetComponent<Enemy>())
 		{
@@ -65,6 +65,7 @@ public class Projectile : MonoBehaviour {
 				this.aoe = 0f;
 				GameObject splash = Instantiate(this.gameObject, transform.position, Quaternion.identity) as GameObject;
 				splash.GetComponent<CircleCollider2D>().radius = tmpAoe * 2f;
+				iTween.PunchScale(splash.gameObject, Vector3.one * tmpAoe * 4f, 2f);
 			}
 			KillProjectile();
 		}
