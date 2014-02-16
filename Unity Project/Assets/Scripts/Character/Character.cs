@@ -113,8 +113,9 @@ public class Character : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D collider)
 	{
-		if(collider.GetComponent<Enemy>())
+		if(collider.GetComponent<Enemy>() && !gameManInstance.GetIsGameOver())
 		{
+			iTween.PunchScale(transform.FindChild("Model").gameObject, Vector3.one, 0.5f);
 			float damageTaken = (gameManInstance.GetCurrentState() == 3) ? 1/3f : 1f;
 			if(health > damageTaken)
 			{
