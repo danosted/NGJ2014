@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
 	private float comboKillInterval;
 	[SerializeField]
 	private SpriteRenderer whiteScreen;
+	private bool isGameOver;
 
 	public static GameManager Instance { get; private set;}
 
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour {
 		combo = 0;
 		frameKillCount = 0;
 		lastKillTime = 0;
+		isGameOver = false;
 	}
 
 	void Update()
@@ -69,11 +71,10 @@ public class GameManager : MonoBehaviour {
 
 	public void GameOver()
 	{
-		while(currentState < 4)
-		{
-			GoToNextState();
-		}
+		currentState = 3;
+		GoToNextState();
 		whiteScreen.collider2D.enabled = true;
+		isGameOver = true;
 		StartCoroutine(FadeoutReset());
 	}
 
@@ -81,14 +82,27 @@ public class GameManager : MonoBehaviour {
 	{
 		return currentState;
 	}
+	public bool GetIsGameOver()
+	{
+		return this.isGameOver;
+	}
 
 	private IEnumerator FadeoutReset()
 	{
-		while(!Input.GetMouseButtonDown(0))
+		whiteScreen.color = new Color(1f, 1f, 1f, 0f);
+		while(whiteScreen.color.a < 0.85f)
 		{
 			whiteScreen.color = Color.Lerp(whiteScreen.color, Color.white, Time.deltaTime);
 			yield return null;
 		}
-		Application.LoadLevel(0);
+		while (true)
+		{
+			whiteScreen.color = Color.Lerp(whiteScreen.color, Color.white, Time.deltaTime);
+			if (Input.GetMouseButtonDown(0))
+			{
+				Application.LoadLevel(0);
+			}
+			yield return null;
+		}
 	}
 }

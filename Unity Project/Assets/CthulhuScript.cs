@@ -23,7 +23,7 @@ public class CthulhuScript : MonoBehaviour {
 
 	private void OnStateChanged(int currentState, float changeTime)
 	{
-		if (currentState >= 3)
+		if (currentState == 3)
 		{
 			StartCoroutine ("ShowCthulhu");
 		}

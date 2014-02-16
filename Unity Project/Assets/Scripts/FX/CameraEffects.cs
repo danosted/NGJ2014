@@ -35,8 +35,11 @@ public class CameraEffects : MonoBehaviour {
 
 	private void OnStateChange(int state, float stateChangeTime)
 	{
-		StartCameraShake();
-		StartColourShow();
+		if (state != 4)
+		{
+			StartCameraShake();
+			StartColourShow();
+		}
 	}
 
 	public void StartCameraShake()
