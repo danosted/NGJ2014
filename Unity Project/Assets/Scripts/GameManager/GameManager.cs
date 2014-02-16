@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour {
 
 	private IEnumerator FadeoutReset()
 	{
-		while(whiteScreen.color.a < 1f)
+		while(whiteScreen.color.a < 0.9f && !Input.GetMouseButtonDown(0))
 		{
 			whiteScreen.color = Color.Lerp(whiteScreen.color, Color.white, Time.deltaTime);
 			yield return null;
