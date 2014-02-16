@@ -26,6 +26,11 @@ public class Ambience : MonoBehaviour {
 
 	private void OnStateChange(int state, float stateChangeTime)
 	{
+		if (state == 4)
+		{
+			gameObject.SetActive(false);
+			return;
+		}
 		this.stateChangeTime = stateChangeTime;
 		if(this.state < state)
 		{

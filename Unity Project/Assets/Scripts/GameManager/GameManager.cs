@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour {
 
 	private IEnumerator FadeoutReset()
 	{
+		whiteScreen.GetComponent<AudioSource>().Play();
 		whiteScreen.color = new Color(1f, 1f, 1f, 0f);
 		while(whiteScreen.color.a < 0.85f)
 		{
