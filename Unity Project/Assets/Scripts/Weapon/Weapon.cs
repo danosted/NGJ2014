@@ -83,6 +83,7 @@ public class Weapon : MonoBehaviour {
 		}
 		if(clips.Length == 1)
 		{
+			audio.clip = clips[0];
 			audio.Play();
 		}
 		else if(!audio.isPlaying)
