@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour {
 	{
 		currentState++;
 		if(OnStateChanged != null)
-			OnStateChanged(currentState, stateChangeTime);
+			OnStateChanged(currentState, stateChangeTime + ((currentState == 2) ? 15f : 0f));
 	}
 
 	public void IncrementFrameKillCount()

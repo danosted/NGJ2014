@@ -57,8 +57,8 @@ public class Enemy : MonoBehaviour {
 			this.isSpecialAnimating = true;
 			StartCoroutine("WaitForSpecialAnimation");
 		}
-		this.health--;
-		GetComponentInChildren<HealthbarScript>().DamageTaken(1);
+		this.health -= Mathf.RoundToInt(projectile.GetDamage());
+		GetComponentInChildren<HealthbarScript>().DamageTaken(projectile.GetDamage());
 		GetComponent<EnemyMovement>().GotShot(projectile);
 
 	}
