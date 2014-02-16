@@ -38,11 +38,6 @@ public class Projectile : MonoBehaviour {
 		}
 	}
 
-//	public IEnumerator ShootHoming(float speed, float damage, float aoe, Transform target)
-//	{
-//
-//	}
-
 	void OnCollisionEnter2D(Collision2D collision)
 	{
 		if(collision.gameObject.GetComponent<Enemy>())
@@ -59,9 +54,9 @@ public class Projectile : MonoBehaviour {
 		}
 	}
 
-	void OnColliderEnter2D(Collider2D Collider)
+	void OnColliderEnter2D(Collider2D collider)
 	{
-		if(Collider.GetComponent<Enemy>())
+		if(collider.GetComponent<Enemy>())
 		{
 			hit = true;
 			if(aoe > 0f)

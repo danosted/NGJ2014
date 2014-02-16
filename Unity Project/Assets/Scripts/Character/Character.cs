@@ -115,6 +115,14 @@ public class Character : MonoBehaviour {
 	{
 		if(collider.GetComponent<Enemy>())
 		{
+			if(health-1 > 0)
+			{
+				health--;
+			} else
+			{
+				gameManInstance.GameOver();
+				return;
+			}
 			healthBar.DamageTaken(1f);
 		}
 	}

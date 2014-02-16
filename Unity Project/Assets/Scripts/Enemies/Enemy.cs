@@ -20,6 +20,14 @@ public class Enemy : MonoBehaviour {
 		GameManager.Instance.OnStateChanged += this.OnStateChanged;
 	}
 
+	void Update()
+	{
+		if (transform.position.magnitude > 30)
+		{
+			this.DeactivateObject();
+		}
+	}
+
 	public void DeactivateObject()
 	{
 		this.gameObject.SetActive(false);
@@ -37,27 +45,29 @@ public class Enemy : MonoBehaviour {
 
 	private void GotShot(Projectile projectile)
 	{
-		if(!isSpecial || transform.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Rabbit_Monster_Move") && !rigidbody2D.IsSleeping())
+//		iTween.PunchScale(gameObject, Vector3.one * 0.5f, 0.5f);
+//		iTween.PunchRotation(gameObject, new Vector3(0.5f, 0.5f, 0), 0.5f);
+		if(!isSpecial || transform.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Rabbit_Monster_Move"))
 		{
 			this.health--;
+			GetComponentInChildren<HealthbarScript>().DamageTaken(1);
 			GetComponent<EnemyMovement>().GotShot(projectile);
 		}
-		else
+		else if (!isSpecialAnimating)
 		{	
+			this.isSpecialAnimating = true;
 			StartCoroutine("WaitForSpecialAnimation");
 		}
 	}
 
 	private IEnumerator WaitForSpecialAnimation()
 	{ 
-		this.isSpecialAnimating = true;
 		transform.GetComponentInChildren<Animator>().SetBool("SpecialAnimating", true);
 		rigidbody2D.Sleep();
 		GameManager.Instance.GoToNextState();
 		yield return new WaitForSeconds(0.5f);
 		transform.GetComponentInChildren<Animator>().SetBool("SpecialAnimating", false);
 		rigidbody2D.WakeUp ();
-		this.isSpecialAnimating = false;
 	}
 
 	private void OnStateChanged(int currentState, float changeTime)
@@ -73,7 +83,12 @@ public class Enemy : MonoBehaviour {
 	{
 		this.enemyManager = enemyManager;
 	}
-	
+
+	public EnemyManager GetEnemyManager()
+	{
+		return this.enemyManager;
+	}
+
 	public EnemyType GetEnemyType()
 	{
 		return this.type;
@@ -100,6 +115,10 @@ public enum EnemyType
 {
 	Butterfly,
 	Rabbit,
+	Gnome,
+	UFO,
+	Plane,
+	Cthulhu,
 }
 
 public enum Orientation
