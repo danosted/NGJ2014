@@ -154,7 +154,7 @@ MonoBehaviour:
   zen: 0
   gunPosition: {fileID: 400004}
   weapons:
-  - {fileID: 11400000, guid: d66ed3401fa8e0146a4061755aa927c7, type: 2}
+  - {fileID: 11400000, guid: 8fdbe2ddb2f4d864a930e706ba234bc4, type: 2}
   - {fileID: 11400000, guid: 2423d78956b45c64eb16a15b92419096, type: 2}
   - {fileID: 11400000, guid: d66ed3401fa8e0146a4061755aa927c7, type: 2}
   - {fileID: 11400000, guid: ecb7193b41d9a3348ab9897f97c8fe3a, type: 2}
