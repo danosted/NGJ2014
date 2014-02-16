@@ -10,6 +10,7 @@ public class EnemyManager : MonoBehaviour {
 	private List<Enemy> enemyPool;
 	[SerializeField]
 	private List<Enemy> enemyPrefabs;
+	[SerializeField]
 	private Vector2 enemySpawnLimits;
 	private int enemySpawnMin;
 	private int enemySpawnMax;
@@ -69,7 +70,10 @@ public class EnemyManager : MonoBehaviour {
 				enemy.SetIsSpecial(true);
 			}
 		}
-		
+
+		enemySpawnLimits.x = 0.25f + (enemySpawnLimits.x - 0.25f) * 0.95f;
+		enemySpawnLimits.y = 0.5f + (enemySpawnLimits.y - 0.5f) * 0.95f;
+
 		Invoke("SpawnEnemyLoop", Random.Range (enemySpawnLimits.x, enemySpawnLimits.y));
 	}
 	private void GenerateEnemyPaths()
@@ -108,7 +112,6 @@ public class EnemyManager : MonoBehaviour {
 	{
 		if (currentState + 1 < enemyPrefabs.Count)
 		{
-			enemySpawnMin++;
 			enemySpawnMax++;
 		}
 	}

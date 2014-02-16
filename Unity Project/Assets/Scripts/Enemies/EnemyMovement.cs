@@ -13,6 +13,7 @@ public class EnemyMovement : MonoBehaviour {
 	[SerializeField]
 	private GameObject enemyPathObject;
 	private Orientation orientation;
+	private static float punchAmount = 0.5f;
 
 	public void Init(Enemy enemyReference)
 	{
@@ -71,6 +72,8 @@ public class EnemyMovement : MonoBehaviour {
 
 	public void GotShot(Projectile projectile)
 	{
+		iTween.PunchScale(gameObject, Vector3.one * punchAmount, 0.5f);
+		iTween.PunchRotation(gameObject, Vector3.one * punchAmount, 0.5f);
 		bool isDead = enemyReference.GetHealth() <= 0;
 		if (isDead)
 		{
@@ -79,6 +82,12 @@ public class EnemyMovement : MonoBehaviour {
 			if (enemyReference.GetIsSpecial())
 				GameManager.Instance.GoToNextState();
 			GameManager.Instance.IncrementFrameKillCount();
+			if (GameManager.Instance.GetCurrentState() >= 3)
+			{
+				punchAmount += 0.1f;
+			}
+			GetComponentInChildren<HealthbarScript>().DamageTaken(int.MaxValue);
+			collider2D.enabled = false;
 			this.Deactivate();
 		}
 	}
