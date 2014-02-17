@@ -100,8 +100,8 @@ MonoBehaviour:
   themes:
   - {fileID: 8300000, guid: 676c2d6ea7216514886437abd95e068c, type: 3}
   - {fileID: 8300000, guid: e7b2559a6457f0d419db049c65802bb2, type: 3}
-  - {fileID: 8300000, guid: 616a9309b9e1af044be852b441e796ac, type: 3}
   - {fileID: 8300000, guid: cb767677031acd243823bec02a593e6c, type: 3}
+  - {fileID: 8300000, guid: 616a9309b9e1af044be852b441e796ac, type: 3}
   bridges:
   - {fileID: 8300000, guid: 068377bda600fd241a274b4fb0ae51a5, type: 3}
   - {fileID: 8300000, guid: 068377bda600fd241a274b4fb0ae51a5, type: 3}
