@@ -48,10 +48,6 @@ public class GameManager : MonoBehaviour {
 		{	
 			GoToNextState();
 		}
-		else if (Instance.combo >= 100 && Instance.currentState == 3)
-		{	
-			GameOver();
-		}
 		Instance.frameKillCount = 0;
 
 		Instance.score += Instance.combo * Time.deltaTime;

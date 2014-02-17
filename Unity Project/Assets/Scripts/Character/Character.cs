@@ -12,7 +12,10 @@ public class Character : MonoBehaviour {
 	[SerializeField]
 	private Weapon[] weapons;
 	[SerializeField]
+	private Transform crossHairs;
+	[SerializeField]
 	private HealthbarScript healthBar;
+
 
 	private Weapon weapon;
 	private bool facingLeft;
@@ -38,6 +41,9 @@ public class Character : MonoBehaviour {
 		gameManInstance = GameManager.Instance;
 		gameManInstance.OnStateChanged += OnStateChange;
 		GetComponent<GameInitializer2Object>().OnInitializeWithDependencies += Initialize;
+		GameObject ch = Instantiate(crossHairs.gameObject) as GameObject;
+		this.crossHairs = ch.transform;
+		StartCoroutine(PointGun());
 	}
 
 	public void Initialize(GameObject[] dependencies)
@@ -81,11 +87,13 @@ public class Character : MonoBehaviour {
 
 	private IEnumerator PointGun()
 	{
-		while(isFiring)
+		while(weapon)
 		{
 			Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			(mousepos - gunPosition.position).Normalize();
-			float angle = Mathf.Atan(mousepos.y/mousepos.x);
+			crossHairs.position = new Vector3(mousepos.x, mousepos.y, 0f);
+			Vector3 weaponPos = weapon.transform.position;
+			Vector3 weaponToMouse = (mousepos - weaponPos).normalized;
+			float angle = Mathf.Atan(weaponToMouse.y/weaponToMouse.x);
 			if(facingLeft)
 			{
 				weapon.transform.rotation = Quaternion.AngleAxis(angle * 180f/Mathf.PI, Vector3.back);
@@ -94,6 +102,14 @@ public class Character : MonoBehaviour {
 			{
 				weapon.transform.rotation = Quaternion.AngleAxis(angle * 180f/Mathf.PI, Vector3.forward);
 			}
+			yield return null;
+		}
+	}
+
+	private IEnumerator FireGun()
+	{
+		while(isFiring)
+		{
 			this.weapon.StartFiring();
 			yield return null;
 		}
@@ -102,7 +118,7 @@ public class Character : MonoBehaviour {
 	private void OnPressed()
 	{
 		isFiring = true;
-		StartCoroutine(PointGun());
+		StartCoroutine(FireGun());
 	}
 
 	private void OnReleased()
@@ -151,6 +167,7 @@ public class Character : MonoBehaviour {
 				wGO.transform.localScale = new Vector3(-1f * wGO.transform.localScale.x,wGO.transform.localScale.y, wGO.transform.localScale.z);
 			}
 			weapon = wGO.GetComponent<Weapon>();
+			StartCoroutine(PointGun());
 		}
 	}
 
