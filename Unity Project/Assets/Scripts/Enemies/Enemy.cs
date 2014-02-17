@@ -11,6 +11,14 @@ public class Enemy : MonoBehaviour {
 	private bool isSpecial;
 	private bool isSpecialAnimating;
 	private bool hasSpecialAnimated;
+	private float volume;
+	[SerializeField]
+	private AudioClip[] clips;
+
+	void Awake()
+	{
+		volume = audio.volume;
+	}
 	
 	public void Init()
 	{
@@ -20,6 +28,9 @@ public class Enemy : MonoBehaviour {
 		this.gameObject.SetActive(true);
 		GetComponent<EnemyMovement>().Init(this);
 		GameManager.Instance.OnStateChanged += this.OnStateChanged;
+		audio.clip = clips[0];
+		audio.volume = volume;
+		audio.Play();
 	}
 
 	void Update()
@@ -55,7 +66,22 @@ public class Enemy : MonoBehaviour {
 		if (isSpecial && !isSpecialAnimating && !hasSpecialAnimated)
 		{	
 			this.isSpecialAnimating = true;
+			audio.clip = clips[2];
+			audio.volume = 1f;
+			audio.Play();
 			StartCoroutine("WaitForSpecialAnimation");
+		}
+		else if(isSpecial)
+		{
+			audio.clip = clips[3];
+			audio.volume = 1f;
+			audio.Play();
+		}
+		else
+		{
+			audio.clip = clips[1];
+			audio.volume = 0.02f;
+			audio.Play();
 		}
 		this.health -= Mathf.RoundToInt(projectile.GetDamage());
 		GetComponentInChildren<HealthbarScript>().DamageTaken(projectile.GetDamage());
@@ -80,6 +106,10 @@ public class Enemy : MonoBehaviour {
 		if (currentState == 1 && !isSpecial)
 		{
 			GetComponent<EnemyMovement>().Deactivate();
+		}
+		if(currentState == 4)
+		{
+			Destroy(gameObject);
 		}
 	}
 

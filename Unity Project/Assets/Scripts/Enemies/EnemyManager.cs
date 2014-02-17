@@ -117,6 +117,10 @@ public class EnemyManager : MonoBehaviour {
 		{
 			StartCoroutine("UpdateState", stateChangeTime);
 		}
+		if(currentState == 4)
+		{
+			Destroy(gameObject);
+		}
 	}
 	private IEnumerator UpdateState(float stateChangetime)
 	{

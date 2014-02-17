@@ -195,7 +195,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: ec5bd53ef301c824f826b4990d360303, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: .5
   m_Pitch: 1
   Loop: 0
@@ -298,6 +298,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   health: 4
+  clips:
+  - {fileID: 8300000, guid: ec5bd53ef301c824f826b4990d360303, type: 3}
+  - {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

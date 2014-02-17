@@ -23,16 +23,9 @@ public class Weapon : MonoBehaviour {
 	private Transform gunModel;
 	[SerializeField]
 	private AudioClip[] clips;
-	private AudioSource audio;
 	private float timeStart;
-
 	private bool isFiring;
 	private bool isCooling;
-
-	void Start()
-	{
-		audio = GetComponent<AudioSource>();
-	}
 
 	public void StartFiring()
 	{

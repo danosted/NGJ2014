@@ -6,11 +6,14 @@ public class CthulhuScript : MonoBehaviour {
 	private GameObject currentCthulhu;
 	private Vector3 targetPosition;
 	private float movementSpeed;
+	private CameraEffects camera;
+	private float currentState;
 
 	public void Init()
 	{
 		movementSpeed = 3f;
 		GameManager.Instance.OnStateChanged += this.OnStateChanged;
+		camera = Camera.main.GetComponent<CameraEffects>();
 	}
 
 	void Update()
@@ -27,12 +30,19 @@ public class CthulhuScript : MonoBehaviour {
 		{
 			StartCoroutine ("ShowCthulhu");
 		}
+		if(currentState == 4)
+		{
+			Destroy(gameObject);
+		}
 	}
 
 	private IEnumerator ShowCthulhu()
 	{
 		currentCthulhu = transform.GetChild(Random.Range (0, 4)).gameObject;
 		Vector3 movementVector = Vector3.zero;
+		audio.Play();
+		camera.StartCameraShake();
+		camera.StartColourShow();
 		switch (currentCthulhu.name)
 		{
 		case "Animator_Top":

@@ -13,7 +13,7 @@ public class EnemyMovement : MonoBehaviour {
 	[SerializeField]
 	private GameObject enemyPathObject;
 	private Orientation orientation;
-	private static float punchAmount = 0.5f;
+	private static float punchAmount = 0.8f;
 
 	public void Init(Enemy enemyReference)
 	{
@@ -92,5 +92,9 @@ public class EnemyMovement : MonoBehaviour {
 	public GameObject GetEnemyPathObject()
 	{
 		return this.enemyPathObject;
+	}
+	void OnLevelWasLoaded()
+	{
+		punchAmount = 0f;
 	}
 }

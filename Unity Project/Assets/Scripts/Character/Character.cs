@@ -15,12 +15,16 @@ public class Character : MonoBehaviour {
 	private Transform crossHairs;
 	[SerializeField]
 	private HealthbarScript healthBar;
+	[SerializeField]
+	private AudioClip[] clips;
 
 
 	private Weapon weapon;
 	private bool facingLeft;
 	private bool isFiring;
 	private Transform model;
+	private float timeStart;
+	private bool flashing;
 
 	private GameManager gameManInstance;
 
@@ -43,6 +47,7 @@ public class Character : MonoBehaviour {
 		GetComponent<GameInitializer2Object>().OnInitializeWithDependencies += Initialize;
 		GameObject ch = Instantiate(crossHairs.gameObject) as GameObject;
 		this.crossHairs = ch.transform;
+		Screen.showCursor = false;
 		StartCoroutine(PointGun());
 	}
 
@@ -51,7 +56,9 @@ public class Character : MonoBehaviour {
 		healthBar = dependencies[0].GetComponent<HealthbarScript>();
 		healthBar.Init(health);
 	}
-#if UNITY_EDITOR
+#if UNITY_ANDROID
+
+#else
 	void Update()
 	{
 		if(Camera.main.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x)
@@ -136,10 +143,14 @@ public class Character : MonoBehaviour {
 			if(health > damageTaken)
 			{
 				health -= damageTaken;
+				if(!flashing)
+					StartCoroutine(FlashOnDamage());
+				PlayRandomSound();
 			} 
 			else
 			{
 				healthBar.DamageTaken(int.MaxValue);
+				PlayRandomSound();
 				gameManInstance.GameOver();
 				return;
 			}
@@ -149,13 +160,38 @@ public class Character : MonoBehaviour {
 		}
 	}
 
+	private IEnumerator FlashOnDamage()
+	{
+		flashing = true;
+		SpriteRenderer r = model.GetComponent<SpriteRenderer>();
+		float waitTime = 0.1f;
+		float totalTime = 0.5f;
+		while(totalTime > 0)
+		{
+			r.color = Color.red;
+
+			yield return new WaitForSeconds(waitTime);
+			r.color = Color.white;
+			yield return new WaitForSeconds(waitTime);
+			totalTime -= (Time.deltaTime + 2f*waitTime);
+		}
+		flashing = false;
+	}
+
 	private void OnStateChange(int state, float stateChangeTime)
 	{
+
 		StartCoroutine(ChangeToState(state, stateChangeTime));
+
 	}
 
 	private IEnumerator ChangeToState(int state, float stateChangeTime)
 	{
+		if(state == 4)
+		{
+			//TODO: On Death Sequence
+			this.enabled = false;
+		}
 		yield return new WaitForSeconds(stateChangeTime);
 		if(weapons.Length > state)
 		{
@@ -171,8 +207,46 @@ public class Character : MonoBehaviour {
 		}
 	}
 
+	private void PlayRandomSound()
+	{
+		if(clips.Length == 0)
+		{
+			return;
+		}
+		if(clips[0].name == "GunShot")
+		{
+			audio.Play();
+		}
+		if(clips.Length == 1)
+		{
+			audio.clip = clips[0];
+			audio.Play();
+		}
+		else if(!audio.isPlaying)
+		{
+			int randIndex = Random.Range(0, clips.Length-1);
+			timeStart = Time.time;
+			audio.clip = clips[randIndex];
+			audio.Play();
+		}
+		else
+		{
+			StartCoroutine(PlaySoundAfter());
+		}
+	}
+	
+	private IEnumerator PlaySoundAfter()
+	{
+		int randIndex = Random.Range(0, clips.Length-1);
+		float timeSinceStart = Time.time - timeStart;
+		yield return new WaitForSeconds(audio.clip.length - timeSinceStart);
+		audio.clip = clips[randIndex];
+		audio.Play();
+	}
+
 	public float GetHealth()
 	{
 		return this.health;
 	}
+
 }
