@@ -42,6 +42,7 @@ public class Ambience : MonoBehaviour {
 		} 
 		else if(themes.Length > state)
 		{
+			isChanging = true;
 			StartCoroutine(OldAudioToBridge());
 		}
 	}
@@ -59,7 +60,6 @@ public class Ambience : MonoBehaviour {
 	{
 		audio.loop = false;
 		startTime = Mathf.Abs(startTime - Time.time);
-		isChanging = true;
 		while(audio.isPlaying)
 		{
 			yield return null;
@@ -67,16 +67,13 @@ public class Ambience : MonoBehaviour {
 		audio.clip = bridges[state-1];
 		audio.loop = true;
 		audio.Play();
-		Debug.Log("playin " + bridges[state-1].name);
+		Debug.Log("playin " + bridges[state-1].name + " for " + audio.clip.length + " sec");
 		StartCoroutine(BridgeToAudio());
 	}
 
 	private IEnumerator BridgeToAudio()
 	{
-		while(audio.isPlaying)
-		{
-			yield return null;
-		}
+		yield return new WaitForSeconds(audio.clip.length);
 		audio.clip = themes[state];
 		audio.loop = true;
 		audio.Play();
