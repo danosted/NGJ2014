@@ -217,7 +217,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2423d78956b45c64eb16a15b92419096, type: 2}
   - {fileID: 11400000, guid: d66ed3401fa8e0146a4061755aa927c7, type: 2}
   - {fileID: 11400000, guid: ecb7193b41d9a3348ab9897f97c8fe3a, type: 2}
-  crossHairs: {fileID: 400000, guid: 7a45cd3a3bc21364c948907cdf39e50e, type: 2}
+  crossHairs: {fileID: 0}
   healthBar: {fileID: 0}
   clips:
   - {fileID: 8300000, guid: ace54ef40dcfe4713bc800d53d5fc077, type: 3}

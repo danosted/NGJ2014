@@ -45,9 +45,9 @@ public class Character : MonoBehaviour {
 		gameManInstance = GameManager.Instance;
 		gameManInstance.OnStateChanged += OnStateChange;
 		GetComponent<GameInitializer2Object>().OnInitializeWithDependencies += Initialize;
-		GameObject ch = Instantiate(crossHairs.gameObject) as GameObject;
-		this.crossHairs = ch.transform;
-		Screen.showCursor = false;
+//		GameObject ch = Instantiate(crossHairs.gameObject) as GameObject;
+//		this.crossHairs = ch.transform;
+//		Screen.showCursor = false;
 		StartCoroutine(PointGun());
 	}
 
@@ -97,7 +97,7 @@ public class Character : MonoBehaviour {
 		while(weapon)
 		{
 			Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			crossHairs.position = new Vector3(mousepos.x, mousepos.y, 0f);
+//			crossHairs.position = new Vector3(mousepos.x, mousepos.y, 0f);
 			Vector3 weaponPos = weapon.transform.position;
 			Vector3 weaponToMouse = (mousepos - weaponPos).normalized;
 			float angle = Mathf.Atan(weaponToMouse.y/weaponToMouse.x);

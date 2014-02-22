@@ -40,7 +40,6 @@ public class CthulhuScript : MonoBehaviour {
 	{
 		currentCthulhu = transform.GetChild(Random.Range (0, 4)).gameObject;
 		Vector3 movementVector = Vector3.zero;
-		audio.Play();
 		camera.StartCameraShake();
 		camera.StartColourShow();
 		switch (currentCthulhu.name)
